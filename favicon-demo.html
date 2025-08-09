@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favicon功能演示</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .demo-section {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .demo-title {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .demo-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .demo-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">
+                <i class="fas fa-credit-card"></i>
+                Favicon功能演示
+            </h1>
+            <p class="subtitle">展示各种favicon加载状态和降级处理</p>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="demo-section">
+                <h2 class="demo-title">✅ 成功加载的Favicon</h2>
+                <div class="demo-grid">
+                    <div class="demo-card">
+                        <div class="bank-icon">
+                            <img class="favicon-img" src="https://www.icbc.com.cn/favicon.ico" alt="工商银行" data-fallback="工">
+                            <span class="fallback-text">工</span>
+                        </div>
+                        <h4 class="bank-name">工商银行</h4>
+                        <p class="demo-description">真实的银行favicon图标</p>
+                    </div>
+                    
+                    <div class="demo-card">
+                        <div class="bank-icon">
+                            <img class="favicon-img" src="https://www.google.com/s2/favicons?domain=github.com&sz=64" alt="GitHub" data-fallback="G">
+                            <span class="fallback-text">G</span>
+                        </div>
+                        <h4 class="bank-name">GitHub</h4>
+                        <p class="demo-description">使用Google Favicon服务</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h2 class="demo-title">⚠️ 降级处理演示</h2>
+                <div class="demo-grid">
+                    <div class="demo-card">
+                        <div class="bank-icon">
+                            <img class="favicon-img" src="https://invalid-url-for-demo.com/favicon.ico" alt="测试银行" data-fallback="测">
+                            <span class="fallback-text">测</span>
+                        </div>
+                        <h4 class="bank-name">测试银行</h4>
+                        <p class="demo-description">URL无效，显示降级文本</p>
+                    </div>
+                    
+                    <div class="demo-card">
+                        <div class="bank-icon">
+                            <img class="favicon-img" src="https://httpstat.us/404" alt="404银行" data-fallback="4">
+                            <span class="fallback-text">4</span>
+                        </div>
+                        <h4 class="bank-name">404银行</h4>
+                        <p class="demo-description">404错误，显示降级文本</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h2 class="demo-title">🔄 加载状态演示</h2>
+                <div class="demo-grid">
+                    <div class="demo-card">
+                        <div class="bank-icon">
+                            <img class="favicon-img loading" src="https://httpstat.us/200?sleep=3000" alt="慢速银行" data-fallback="慢">
+                            <span class="fallback-text">慢</span>
+                        </div>
+                        <h4 class="bank-name">慢速银行</h4>
+                        <p class="demo-description">模拟慢速加载（3秒延迟）</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h2 class="demo-title">🎨 悬停动画效果</h2>
+                <p style="color: white; text-align: center; margin-bottom: 1rem;">
+                    将鼠标悬停在下方图标上查看动画效果
+                </p>
+                <div class="demo-grid">
+                    <div class="demo-card">
+                        <div class="bank-icon">
+                            <img class="favicon-img" src="https://www.apple.com/favicon.ico" alt="Apple" data-fallback="A">
+                            <span class="fallback-text">A</span>
+                        </div>
+                        <h4 class="bank-name">Apple</h4>
+                        <p class="demo-description">悬停查看旋转和缩放效果</p>
+                    </div>
+                    
+                    <div class="demo-card">
+                        <div class="bank-icon">
+                            <img class="favicon-img" src="https://www.microsoft.com/favicon.ico" alt="Microsoft" data-fallback="M">
+                            <span class="fallback-text">M</span>
+                        </div>
+                        <h4 class="bank-name">Microsoft</h4>
+                        <p class="demo-description">悬停查看光泽扫过效果</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h2 class="demo-title">📱 响应式设计</h2>
+                <p style="color: white; text-align: center; margin-bottom: 1rem;">
+                    调整浏览器窗口大小查看响应式效果
+                </p>
+                <div class="demo-grid">
+                    <div class="demo-card">
+                        <div class="bank-icon">
+                            <img class="favicon-img" src="https://www.amazon.com/favicon.ico" alt="Amazon" data-fallback="亚">
+                            <span class="fallback-text">亚</span>
+                        </div>
+                        <h4 class="bank-name">Amazon</h4>
+                        <p class="demo-description">图标大小自适应屏幕</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <button onclick="retryFailedFavicons()" style="
+                    background: linear-gradient(135deg, #667eea, #764ba2);
+                    color: white;
+                    border: none;
+                    padding: 1rem 2rem;
+                    border-radius: 50px;
+                    font-size: 1rem;
+                    font-weight: bold;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+                " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
+                    🔄 重试失败的图标
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // 为演示页面添加特殊处理
+        document.addEventListener('DOMContentLoaded', function() {
+            // 手动触发一些加载状态
+            setTimeout(() => {
+                const loadingImg = document.querySelector('.favicon-img.loading');
+                if (loadingImg) {
+                    loadingImg.classList.remove('loading');
+                    loadingImg.classList.add('loaded');
+                }
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

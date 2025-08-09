@@ -1,5 +1,8 @@
 // 页面加载完成后执行
 document.addEventListener('DOMContentLoaded', function() {
+    // 初始化Favicon处理
+    initializeFavicons();
+    
     // 添加页面加载动画
     const bankCards = document.querySelectorAll('.bank-card');
     
@@ -184,6 +187,195 @@ document.addEventListener('DOMContentLoaded', function() {
     // 页面加载完成提示
     console.log('银行卡推荐网站已加载完成！');
     console.log('包含银行数量:', bankCards.length);
+});
+
+// Favicon处理函数
+function initializeFavicons() {
+    const faviconImages = document.querySelectorAll('.favicon-img');
+    
+    faviconImages.forEach((img, index) => {
+        // 添加加载状态
+        img.classList.add('loading');
+        
+        // 延迟加载以避免同时请求过多
+        setTimeout(() => {
+            loadFaviconWithFallback(img);
+        }, index * 100);
+    });
+}
+
+function loadFaviconWithFallback(img) {
+    const fallbackText = img.nextElementSibling;
+    const originalSrc = img.src;
+    const fallbackChar = img.dataset.fallback || img.alt.charAt(0);
+    
+    // 创建一个新的Image对象来测试加载
+    const testImg = new Image();
+    
+    testImg.onload = function() {
+        // 图片加载成功
+        img.classList.remove('loading');
+        img.classList.add('loaded');
+        img.style.opacity = '1';
+        if (fallbackText) {
+            fallbackText.style.opacity = '0';
+        }
+        
+        // 添加淡入动画
+        img.style.animation = 'fadeInScale 0.5s ease forwards';
+    };
+    
+    testImg.onerror = function() {
+        // 图片加载失败，尝试备用URL
+        const backupUrls = generateBackupUrls(originalSrc);
+        tryBackupUrls(img, backupUrls, 0, fallbackChar);
+    };
+    
+    // 设置超时处理
+    setTimeout(() => {
+        if (img.classList.contains('loading')) {
+            testImg.onerror();
+        }
+    }, 5000);
+    
+    testImg.src = originalSrc;
+}
+
+function generateBackupUrls(originalUrl) {
+    const domain = originalUrl.split('/')[2];
+    return [
+        `https://${domain}/favicon.png`,
+        `https://${domain}/favicon.jpg`,
+        `https://${domain}/apple-touch-icon.png`,
+        `https://www.google.com/s2/favicons?domain=${domain}&sz=64`,
+        `https://favicons.githubusercontent.com/${domain}`,
+        `https://icon.horse/icon/${domain}`
+    ];
+}
+
+function tryBackupUrls(img, urls, index, fallbackChar) {
+    if (index >= urls.length) {
+        // 所有备用URL都失败，显示降级文本
+        showFallbackText(img, fallbackChar);
+        return;
+    }
+    
+    const testImg = new Image();
+    
+    testImg.onload = function() {
+        // 备用图片加载成功
+        img.src = urls[index];
+        img.classList.remove('loading');
+        img.classList.add('loaded');
+        img.style.opacity = '1';
+        const fallbackText = img.nextElementSibling;
+        if (fallbackText) {
+            fallbackText.style.opacity = '0';
+        }
+        img.style.animation = 'fadeInScale 0.5s ease forwards';
+    };
+    
+    testImg.onerror = function() {
+        // 当前备用URL失败，尝试下一个
+        tryBackupUrls(img, urls, index + 1, fallbackChar);
+    };
+    
+    testImg.src = urls[index];
+}
+
+function showFallbackText(img, fallbackChar) {
+    img.classList.remove('loading');
+    img.classList.add('error');
+    img.style.opacity = '0';
+    
+    const fallbackText = img.nextElementSibling;
+    if (fallbackText) {
+        fallbackText.textContent = fallbackChar;
+        fallbackText.style.opacity = '1';
+        fallbackText.style.animation = 'fadeInScale 0.5s ease forwards';
+    }
+}
+
+// 添加重试机制
+function retryFailedFavicons() {
+    const errorImages = document.querySelectorAll('.favicon-img.error');
+    errorImages.forEach(img => {
+        img.classList.remove('error');
+        loadFaviconWithFallback(img);
+    });
+}
+
+// 图片缓存管理
+const imageCache = new Map();
+
+function cacheImage(url, image) {
+    if (!imageCache.has(url)) {
+        imageCache.set(url, {
+            image: image,
+            timestamp: Date.now()
+        });
+    }
+}
+
+function getCachedImage(url) {
+    const cached = imageCache.get(url);
+    if (cached) {
+        // 检查缓存是否过期（24小时）
+        const isExpired = Date.now() - cached.timestamp > 24 * 60 * 60 * 1000;
+        if (!isExpired) {
+            return cached.image;
+        } else {
+            imageCache.delete(url);
+        }
+    }
+    return null;
+}
+
+// 预加载关键图标
+function preloadCriticalFavicons() {
+    const criticalBanks = [
+        'https://www.icbc.com.cn/favicon.ico',
+        'https://www.abchina.com/favicon.ico',
+        'https://www.ccb.com/favicon.ico',
+        'https://www.boc.cn/favicon.ico',
+        'https://www.cmbchina.com/favicon.ico'
+    ];
+    
+    criticalBanks.forEach(url => {
+        const img = new Image();
+        img.onload = () => cacheImage(url, img);
+        img.src = url;
+    });
+}
+
+// 添加交叉观察器进行懒加载优化
+function setupIntersectionObserver() {
+    if ('IntersectionObserver' in window) {
+        const faviconObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target.querySelector('.favicon-img');
+                    if (img && img.classList.contains('loading')) {
+                        loadFaviconWithFallback(img);
+                        faviconObserver.unobserve(entry.target);
+                    }
+                }
+            });
+        }, {
+            rootMargin: '50px'
+        });
+        
+        // 观察所有银行卡片
+        document.querySelectorAll('.bank-card').forEach(card => {
+            faviconObserver.observe(card);
+        });
+    }
+}
+
+// 在页面加载时预加载关键图标
+document.addEventListener('DOMContentLoaded', function() {
+    preloadCriticalFavicons();
+    setupIntersectionObserver();
 });
 
 // 添加错误处理
