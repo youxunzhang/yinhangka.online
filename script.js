@@ -40,6 +40,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // 添加联系电话点击统计
+    const contactPhones = document.querySelectorAll('.contact-phone');
+    contactPhones.forEach(phone => {
+        phone.addEventListener('click', function(e) {
+            const bankName = this.closest('.bank-card').querySelector('.bank-name').textContent;
+            const phoneNumber = this.textContent.trim();
+            console.log(`用户点击了${bankName}的联系电话：${phoneNumber}`);
+            
+            // 添加点击动画
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 150);
+            
+            // 添加点击反馈
+            this.style.background = 'rgba(102, 126, 234, 0.3)';
+            setTimeout(() => {
+                this.style.background = '';
+            }, 300);
+        });
+    });
+    
     // 添加银行卡片悬浮效果
     bankCards.forEach(card => {
         card.addEventListener('mouseenter', function() {

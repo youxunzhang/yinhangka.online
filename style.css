@@ -402,12 +402,60 @@ body {
 .bank-description {
     font-size: 0.85rem;
     color: #666;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
     opacity: 0.8;
     line-height: 1.4;
 }
 
 .bank-card.featured .bank-description {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* 银行联系电话 */
+.bank-contact {
+    margin-bottom: 1rem;
+}
+
+.contact-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #667eea;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    background: rgba(102, 126, 234, 0.1);
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    transition: all 0.3s ease;
+}
+
+.contact-phone:hover {
+    background: rgba(102, 126, 234, 0.2);
+    border-color: rgba(102, 126, 234, 0.4);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+}
+
+.contact-phone i {
+    font-size: 0.8rem;
+    color: #667eea;
+}
+
+.bank-card.featured .contact-phone {
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.bank-card.featured .contact-phone:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+}
+
+.bank-card.featured .contact-phone i {
     color: rgba(255, 255, 255, 0.9);
 }
 
@@ -569,6 +617,15 @@ body {
     
     .bank-name {
         font-size: 1.3rem;
+    }
+    
+    .contact-phone {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+    }
+    
+    .contact-phone i {
+        font-size: 0.7rem;
     }
     
     .footer-content {
