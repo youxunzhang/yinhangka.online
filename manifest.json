@@ -1,0 +1,119 @@
+{
+  "name": "银行卡推荐网站 - 选择最适合您的银行",
+  "short_name": "银行卡推荐",
+  "description": "为您提供最全面的银行服务信息，助您选择最适合的银行产品和信用卡申请服务",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#667eea",
+  "theme_color": "#667eea",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "zh-CN",
+  "categories": ["finance", "business", "lifestyle"],
+  "icons": [
+    {
+      "src": "/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "信用卡申请",
+      "short_name": "信用卡",
+      "description": "快速申请信用卡",
+      "url": "/credit-cards.html",
+      "icons": [
+        {
+          "src": "/icons/credit-card-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "国内银行",
+      "short_name": "国内银行",
+      "description": "查看国内银行信息",
+      "url": "/index.html",
+      "icons": [
+        {
+          "src": "/icons/bank-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "全球银行",
+      "short_name": "全球银行",
+      "description": "查看全球银行信息",
+      "url": "/global-banks.html",
+      "icons": [
+        {
+          "src": "/icons/global-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop-1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "银行卡推荐网站首页"
+    },
+    {
+      "src": "/screenshots/mobile-1.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "移动端银行卡片展示"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

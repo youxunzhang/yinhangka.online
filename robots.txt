@@ -1,0 +1,29 @@
+User-agent: *
+Allow: /
+
+# 禁止爬取管理页面和临时文件
+Disallow: /admin/
+Disallow: /temp/
+Disallow: /private/
+Disallow: /*.log$
+Disallow: /*.tmp$
+
+# 允许爬取所有HTML页面
+Allow: /*.html
+Allow: /*.htm
+
+# 允许爬取CSS、JS、图片等资源
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.ico
+
+# 指定sitemap位置
+Sitemap: https://yinhangka.online/sitemap.xml
+
+# 爬取延迟（秒）
+Crawl-delay: 1
