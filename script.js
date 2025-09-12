@@ -38,20 +38,92 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // 添加银行卡片点击统计
+    // 添加银行卡片点击统计和错误处理
     const bankLinks = document.querySelectorAll('.bank-link');
     bankLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const bankName = this.closest('.bank-card').querySelector('.bank-name').textContent;
-            console.log(`用户点击了：${bankName}`);
+            const bankUrl = this.href;
+            console.log(`用户点击了：${bankName}，链接：${bankUrl}`);
             
             // 添加点击动画
             this.style.transform = 'scale(0.95)';
             setTimeout(() => {
                 this.style.transform = '';
             }, 150);
+            
+            // 添加链接验证和错误处理
+            validateAndHandleLink(this, bankName, bankUrl);
         });
     });
+    
+    // 链接验证和错误处理函数
+    function validateAndHandleLink(linkElement, bankName, url) {
+        // 检查URL是否有效
+        try {
+            new URL(url);
+        } catch (error) {
+            console.error(`无效的URL: ${url}`);
+            showErrorMessage(`链接无效，请稍后重试或联系客服。`);
+            return;
+        }
+        
+        // 添加加载状态
+        const originalText = linkElement.innerHTML;
+        linkElement.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 正在跳转...';
+        linkElement.style.pointerEvents = 'none';
+        
+        // 设置超时处理
+        const timeout = setTimeout(() => {
+            linkElement.innerHTML = originalText;
+            linkElement.style.pointerEvents = 'auto';
+            showErrorMessage(`跳转超时，请检查网络连接或稍后重试。`);
+        }, 10000);
+        
+        // 监听页面卸载事件来清除超时
+        const handlePageUnload = () => {
+            clearTimeout(timeout);
+            window.removeEventListener('beforeunload', handlePageUnload);
+        };
+        window.addEventListener('beforeunload', handlePageUnload);
+    }
+    
+    // 显示错误消息的函数
+    function showErrorMessage(message) {
+        // 创建错误提示元素
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message';
+        errorDiv.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #ff4444;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 10000;
+            font-size: 14px;
+            max-width: 300px;
+            animation: slideInRight 0.3s ease;
+        `;
+        errorDiv.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>${message}</span>
+                <button onclick="this.parentElement.parentElement.remove()" style="background: none; border: none; color: white; cursor: pointer; font-size: 16px;">&times;</button>
+            </div>
+        `;
+        
+        document.body.appendChild(errorDiv);
+        
+        // 自动移除错误消息
+        setTimeout(() => {
+            if (errorDiv.parentElement) {
+                errorDiv.remove();
+            }
+        }, 5000);
+    }
     
     // 添加联系电话点击统计
     const contactPhones = document.querySelectorAll('.contact-phone');
