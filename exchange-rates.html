@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8794607118520437"
+     crossorigin="anonymous"></script>
+	 
+	 <meta name="google-adsense-account" content="ca-pub-8794607118520437">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实时汇率查询 - 全球货币汇率转换</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>国内银行</span>
+                </a>
+                <a href="global-banks.html" class="nav-link">
+                    <i class="fas fa-globe"></i>
+                    <span>全球银行</span>
+                </a>
+                <a href="credit-cards.html" class="nav-link">
+                    <i class="fas fa-credit-card"></i>
+                    <span>信用卡申请</span>
+                </a>
+                <a href="exchange-rates.html" class="nav-link active">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>实时汇率</span>
+                </a>
+            </nav>
+            <h1 class="logo">
+                <i class="fas fa-chart-line"></i>
+                实时汇率查询
+            </h1>
+            <p class="subtitle">全球主要货币实时汇率转换</p>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <!-- 汇率转换器 -->
+            <section class="converter-section">
+                <div class="converter-card">
+                    <h2 class="converter-title">
+                        <i class="fas fa-calculator"></i>
+                        货币转换器
+                    </h2>
+                    <div class="converter-form">
+                        <div class="input-group">
+                            <label for="amount">金额</label>
+                            <input type="number" id="amount" placeholder="输入金额" value="1" min="0" step="0.01">
+                        </div>
+                        <div class="currency-selector">
+                            <div class="select-group">
+                                <label for="from-currency">从</label>
+                                <select id="from-currency">
+                                    <option value="CNY">人民币 (CNY)</option>
+                                    <option value="USD">美元 (USD)</option>
+                                    <option value="EUR">欧元 (EUR)</option>
+                                    <option value="GBP">英镑 (GBP)</option>
+                                    <option value="JPY">日元 (JPY)</option>
+                                    <option value="HKD">港币 (HKD)</option>
+                                    <option value="KRW">韩元 (KRW)</option>
+                                    <option value="SGD">新加坡元 (SGD)</option>
+                                    <option value="AUD">澳元 (AUD)</option>
+                                    <option value="CAD">加元 (CAD)</option>
+                                    <option value="CHF">瑞士法郎 (CHF)</option>
+                                    <option value="NZD">新西兰元 (NZD)</option>
+                                </select>
+                            </div>
+                            <button id="swap-currencies" class="swap-btn">
+                                <i class="fas fa-exchange-alt"></i>
+                            </button>
+                            <div class="select-group">
+                                <label for="to-currency">到</label>
+                                <select id="to-currency">
+                                    <option value="USD">美元 (USD)</option>
+                                    <option value="CNY">人民币 (CNY)</option>
+                                    <option value="EUR">欧元 (EUR)</option>
+                                    <option value="GBP">英镑 (GBP)</option>
+                                    <option value="JPY">日元 (JPY)</option>
+                                    <option value="HKD">港币 (HKD)</option>
+                                    <option value="KRW">韩元 (KRW)</option>
+                                    <option value="SGD">新加坡元 (SGD)</option>
+                                    <option value="AUD">澳元 (AUD)</option>
+                                    <option value="CAD">加元 (CAD)</option>
+                                    <option value="CHF">瑞士法郎 (CHF)</option>
+                                    <option value="NZD">新西兰元 (NZD)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="result-group">
+                            <label>转换结果</label>
+                            <div id="conversion-result" class="result-display">
+                                <span class="result-amount">0.00</span>
+                                <span class="result-currency">USD</span>
+                            </div>
+                        </div>
+                        <div class="rate-info">
+                            <span id="exchange-rate-info">汇率: 1 CNY = 0.14 USD</span>
+                            <span id="last-updated">最后更新: --</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 主要货币汇率表 -->
+            <section class="rates-section">
+                <h3 class="section-title">
+                    <i class="fas fa-table"></i>
+                    主要货币汇率
+                </h3>
+                <div class="rates-table-container">
+                    <table class="rates-table">
+                        <thead>
+                            <tr>
+                                <th>货币对</th>
+                                <th>买入价</th>
+                                <th>卖出价</th>
+                                <th>中间价</th>
+                                <th>涨跌</th>
+                                <th>更新时间</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rates-table-body">
+                            <!-- 汇率数据将通过JavaScript动态加载 -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 汇率走势图 -->
+            <section class="chart-section">
+                <h3 class="section-title">
+                    <i class="fas fa-chart-area"></i>
+                    汇率走势
+                </h3>
+                <div class="chart-container">
+                    <div class="chart-controls">
+                        <select id="chart-currency-pair">
+                            <option value="USDCNY">USD/CNY</option>
+                            <option value="EURCNY">EUR/CNY</option>
+                            <option value="GBPCNY">GBP/CNY</option>
+                            <option value="JPYCNY">JPY/CNY</option>
+                            <option value="HKDCNY">HKD/CNY</option>
+                        </select>
+                        <select id="chart-period">
+                            <option value="1D">1天</option>
+                            <option value="1W">1周</option>
+                            <option value="1M">1月</option>
+                            <option value="3M">3月</option>
+                            <option value="6M">6月</option>
+                            <option value="1Y">1年</option>
+                        </select>
+                    </div>
+                    <div id="exchange-chart" class="chart-placeholder">
+                        <div class="chart-loading">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>正在加载汇率走势图...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 汇率新闻 -->
+            <section class="news-section">
+                <h3 class="section-title">
+                    <i class="fas fa-newspaper"></i>
+                    汇率资讯
+                </h3>
+                <div class="news-grid" id="exchange-news">
+                    <!-- 新闻内容将通过JavaScript动态加载 -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>关于汇率查询</h4>
+                    <p>提供全球主要货币的实时汇率信息，支持货币转换和走势分析。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>数据来源</h4>
+                    <ul>
+                        <li>中国人民银行</li>
+                        <li>国际货币基金组织</li>
+                        <li>各大银行汇率</li>
+                        <li>实时市场数据</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>免责声明</h4>
+                    <p>汇率信息仅供参考，实际交易以银行公布汇率为准。</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 实时汇率查询网站. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="exchange-rates.js"></script>
+</body>
+</html>
