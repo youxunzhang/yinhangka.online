@@ -9,6 +9,7 @@
 - 💳 **官方链接** - 直接跳转到银行官方网站
 - 🔍 **分类展示** - 按银行类型分类显示
 - ✨ **交互动画** - 流畅的悬浮和点击效果
+- 🧮 **贷款与分期计算器** - 在线测算贷款月供与信用卡分期费用
 - 📱 **移动端优化** - 完美适配手机和平板
 
 ## 包含银行列表
@@ -63,11 +64,17 @@
 ## 文件结构
 
 ```
-银行卡申请/
-├── index.html      # 主页面文件
-├── style.css       # 样式文件
-├── script.js       # 交互脚本
-└── README.md       # 说明文档
+银行卡推荐网站/
+├── index.html                                 # 主页面
+├── global-banks.html                          # 全球银行
+├── credit-cards.html                          # 信用卡申请
+├── exchange-rates.html                        # 实时汇率
+├── loan-interest-calculator.html              # 贷款利率计算器
+├── credit-card-installment-calculator.html    # 信用卡分期计算器
+├── style.css                                  # 全站样式
+├── script.js                                  # 基础交互脚本
+├── calculators.js                             # 计算器功能脚本
+└── README.md                                  # 使用说明
 ```
 
 ## 技术特点

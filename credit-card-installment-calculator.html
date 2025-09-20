@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8794607118520437" crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-8794607118520437">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信用卡分期计算器 - 手续费与每期还款在线测算</title>
+    <meta name="description" content="信用卡分期计算器支持自定义分期金额、期数与每期手续费率，快速计算每期应还、总手续费及年化成本，辅助您做出理性分期决策。">
+    <meta name="keywords" content="信用卡分期计算器,信用卡分期手续费,信用卡还款计划,信用卡分期月供,信用卡理财">
+    <link rel="canonical" href="https://yinhangka.online/credit-card-installment-calculator.html">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>国内银行</span>
+                </a>
+                <a href="global-banks.html" class="nav-link">
+                    <i class="fas fa-globe"></i>
+                    <span>全球银行</span>
+                </a>
+                <a href="credit-cards.html" class="nav-link">
+                    <i class="fas fa-credit-card"></i>
+                    <span>信用卡申请</span>
+                </a>
+                <a href="exchange-rates.html" class="nav-link">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>实时汇率</span>
+                </a>
+                <a href="loan-interest-calculator.html" class="nav-link">
+                    <i class="fas fa-coins"></i>
+                    <span>贷款利率</span>
+                </a>
+                <a href="credit-card-installment-calculator.html" class="nav-link active">
+                    <i class="fas fa-calculator"></i>
+                    <span>信用卡分期</span>
+                </a>
+            </nav>
+            <h1 class="logo">
+                <i class="fas fa-calculator"></i>
+                信用卡分期计算器
+            </h1>
+            <p class="subtitle">清晰了解每期本金与手续费，合理规划信用卡分期</p>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="面包屑导航">
+                <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <a href="/" itemprop="item">
+                            <span itemprop="name">首页</span>
+                        </a>
+                        <meta itemprop="position" content="1" />
+                    </li>
+                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <span itemprop="name">信用卡分期计算器</span>
+                        <meta itemprop="position" content="2" />
+                    </li>
+                </ol>
+            </nav>
+
+            <section class="hero">
+                <h2 class="hero-title">信用卡分期费用一目了然</h2>
+                <p class="hero-description">
+                    输入分期金额、期数与每期手续费率，即可得知每期应还金额、累计手续费及折算年化费率，
+                    帮助您快速判断分期成本是否合理。
+                </p>
+            </section>
+
+            <section class="calculator-section">
+                <div class="calculator-grid">
+                    <div class="calculator-card">
+                        <h3 class="calculator-title">
+                            <i class="fas fa-clipboard-check" aria-hidden="true"></i>
+                            分期参数设置
+                        </h3>
+                        <form id="installment-calculator-form" class="calculator-form">
+                            <div class="form-group">
+                                <label for="installment-amount">分期总金额</label>
+                                <div class="input-wrapper with-prefix">
+                                    <span class="input-prefix">¥</span>
+                                    <input type="number" id="installment-amount" name="installment-amount" inputmode="decimal" min="0" step="100" value="10000" placeholder="例如 10000" aria-describedby="installment-amount-helper" required>
+                                </div>
+                                <p class="form-helper" id="installment-amount-helper">请输入计划分期的消费金额或账单金额，单位为人民币。</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="installment-months">分期期数</label>
+                                <div class="input-wrapper with-suffix">
+                                    <input type="number" id="installment-months" name="installment-months" inputmode="numeric" min="1" step="1" value="12" placeholder="例如 12" aria-describedby="installment-months-helper" required>
+                                    <span class="input-suffix">期</span>
+                                </div>
+                                <p class="form-helper" id="installment-months-helper">常见分期期数有 3、6、12、18 期，可根据个人需求自定义。</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="installment-fee-rate">每期手续费率</label>
+                                <div class="input-wrapper with-suffix">
+                                    <input type="number" id="installment-fee-rate" name="installment-fee-rate" inputmode="decimal" min="0" step="0.01" value="0.60" placeholder="例如 0.60" aria-describedby="installment-fee-rate-helper" required>
+                                    <span class="input-suffix">%</span>
+                                </div>
+                                <p class="form-helper" id="installment-fee-rate-helper">多数银行的每期手续费率在 0.5% - 0.8% 左右，例如填写 0.60 表示每期手续费率为 0.60%。</p>
+                            </div>
+
+                            <button type="submit" class="calculator-submit">
+                                <i class="fas fa-calculator" aria-hidden="true"></i>
+                                计算分期费用
+                            </button>
+                        </form>
+
+                        <div class="calculator-results" id="installment-results" role="region" aria-live="polite" aria-atomic="true">
+                            <p class="placeholder-text">输入分期金额、期数与手续费率后，将展示每期应还及累计手续费情况。</p>
+                        </div>
+                    </div>
+
+                    <aside class="calculator-side">
+                        <div class="info-card">
+                            <h3><i class="fas fa-lightbulb" aria-hidden="true"></i> 使用提示</h3>
+                            <ul>
+                                <li>计算默认手续费按月收取，若为一次性收取，可改用总手续费 ÷ 期数得到近似每期费率。</li>
+                                <li>若提前还清，请关注发卡行是否返还未收取的手续费。</li>
+                                <li>合理安排分期期数，避免因过长周期增加不必要的手续费支出。</li>
+                            </ul>
+                        </div>
+                        <div class="info-card info-card--accent">
+                            <h3><i class="fas fa-shield-alt" aria-hidden="true"></i> 风险提示</h3>
+                            <p>信用卡分期属于有成本的融资方式，建议在预算充足、利率合理时使用。若出现还款压力，可及时与银行沟通调整还款方案。</p>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="calculator-tips">
+                <h3 class="section-title">
+                    <i class="fas fa-chart-line" aria-hidden="true"></i>
+                    分期决策小贴士
+                </h3>
+                <div class="tips-grid">
+                    <div class="info-card info-card--outline">
+                        <h3><i class="fas fa-ruler" aria-hidden="true"></i> 如何评估分期成本？</h3>
+                        <p>关注折算年化费率，与同期贷款或消费信贷利率对比，若年化成本明显偏高，可考虑其他融资方式或提前还款。</p>
+                    </div>
+                    <div class="info-card info-card--outline">
+                        <h3><i class="fas fa-wallet" aria-hidden="true"></i> 分期是否影响额度？</h3>
+                        <p>大部分银行在分期后会占用额度，按期还款后额度逐步恢复，建议预留日常消费空间。</p>
+                    </div>
+                    <div class="info-card info-card--outline">
+                        <h3><i class="fas fa-hand-holding-usd" aria-hidden="true"></i> 分期前的准备</h3>
+                        <ul>
+                            <li>确认账单金额、账单日与还款日，避免逾期。</li>
+                            <li>了解银行的提前结清政策及手续费退还规则。</li>
+                            <li>评估自身收入情况，确保分期后仍有充足现金流。</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>关于我们</h4>
+                    <p>提供实用的金融工具与资讯，帮助您掌握信用卡与银行产品信息。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快捷入口</h4>
+                    <ul>
+                        <li><a href="/index.html">国内银行</a></li>
+                        <li><a href="/credit-cards.html">信用卡申请</a></li>
+                        <li><a href="/exchange-rates.html">实时汇率</a></li>
+                        <li><a href="/loan-interest-calculator.html">贷款利率计算器</a></li>
+                        <li><a href="/credit-card-installment-calculator.html">信用卡分期计算器</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>联系我们</h4>
+                    <p>若您在使用过程中有任何问题，欢迎通过网站客服渠道向我们反馈。</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 银行卡推荐网站. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="calculators.js"></script>
+</body>
+</html>
