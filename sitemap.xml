@@ -36,6 +36,22 @@
         <priority>0.9</priority>
     </url>
 
+    <!-- 贷款利率计算器 -->
+    <url>
+        <loc>https://yinhangka.online/loan-interest-calculator.html</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- 信用卡分期计算器 -->
+    <url>
+        <loc>https://yinhangka.online/credit-card-installment-calculator.html</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
     <!-- 银行详情页面（动态生成） -->
     <url>
         <loc>https://yinhangka.online/banks/icbc.html</loc>

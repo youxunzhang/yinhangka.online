@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8794607118520437" crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-8794607118520437">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贷款利率计算器 - 房贷车贷等额本息月供在线计算</title>
+    <meta name="description" content="贷款利率计算器支持等额本息方式，一键计算房贷、车贷等贷款的月供、总利息和还款计划，帮助您快速制定还款方案。">
+    <meta name="keywords" content="贷款利率计算器,房贷月供计算器,等额本息计算器,贷款利息,房贷计算,车贷计算">
+    <link rel="canonical" href="https://yinhangka.online/loan-interest-calculator.html">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>国内银行</span>
+                </a>
+                <a href="global-banks.html" class="nav-link">
+                    <i class="fas fa-globe"></i>
+                    <span>全球银行</span>
+                </a>
+                <a href="credit-cards.html" class="nav-link">
+                    <i class="fas fa-credit-card"></i>
+                    <span>信用卡申请</span>
+                </a>
+                <a href="exchange-rates.html" class="nav-link">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>实时汇率</span>
+                </a>
+                <a href="loan-interest-calculator.html" class="nav-link active">
+                    <i class="fas fa-coins"></i>
+                    <span>贷款利率</span>
+                </a>
+                <a href="credit-card-installment-calculator.html" class="nav-link">
+                    <i class="fas fa-calculator"></i>
+                    <span>信用卡分期</span>
+                </a>
+            </nav>
+            <h1 class="logo">
+                <i class="fas fa-coins"></i>
+                贷款利率计算器
+            </h1>
+            <p class="subtitle">轻松计算房贷、车贷等多种贷款的月供与利息</p>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="面包屑导航">
+                <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <a href="/" itemprop="item">
+                            <span itemprop="name">首页</span>
+                        </a>
+                        <meta itemprop="position" content="1" />
+                    </li>
+                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <span itemprop="name">贷款利率计算器</span>
+                        <meta itemprop="position" content="2" />
+                    </li>
+                </ol>
+            </nav>
+
+            <section class="hero">
+                <h2 class="hero-title">等额本息月供即时测算</h2>
+                <p class="hero-description">
+                    输入贷款金额、年化利率与还款期限，即可获得详细的等额本息月供计算结果，
+                    包括每月还款金额、利息支出、剩余本金以及前12期的还款计划预览。
+                </p>
+            </section>
+
+            <section class="calculator-section">
+                <div class="calculator-grid">
+                    <div class="calculator-card">
+                        <h3 class="calculator-title">
+                            <i class="fas fa-sliders-h" aria-hidden="true"></i>
+                            贷款参数设置
+                        </h3>
+                        <form id="loan-calculator-form" class="calculator-form">
+                            <div class="form-group">
+                                <label for="loan-amount">贷款总额</label>
+                                <div class="input-wrapper with-prefix">
+                                    <span class="input-prefix">¥</span>
+                                    <input type="number" id="loan-amount" name="loan-amount" inputmode="decimal" min="0" step="1000" value="500000" placeholder="例如 500000" aria-describedby="loan-amount-helper" required>
+                                </div>
+                                <p class="form-helper" id="loan-amount-helper">请输入贷款本金，单位为人民币，例如房贷或车贷的总额度。</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="loan-rate">年化利率</label>
+                                <div class="input-wrapper with-suffix">
+                                    <input type="number" id="loan-rate" name="loan-rate" inputmode="decimal" min="0" step="0.01" value="4.30" placeholder="例如 4.30" aria-describedby="loan-rate-helper" required>
+                                    <span class="input-suffix">%</span>
+                                </div>
+                                <p class="form-helper" id="loan-rate-helper">填写贷款合同中的年化利率，如 4.30 表示年利率 4.30%。</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="loan-term">贷款期限</label>
+                                <div class="input-grid">
+                                    <div class="input-wrapper">
+                                        <input type="number" id="loan-term" name="loan-term" inputmode="decimal" min="1" step="0.5" value="30" placeholder="例如 30" aria-describedby="loan-term-helper" required>
+                                    </div>
+                                    <div class="input-wrapper">
+                                        <select id="loan-term-unit" name="loan-term-unit" aria-label="贷款期限单位">
+                                            <option value="years" selected>年</option>
+                                            <option value="months">月</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <p class="form-helper" id="loan-term-helper">支持以年或月为单位的期限输入，系统会自动换算总期数。</p>
+                            </div>
+
+                            <button type="submit" class="calculator-submit">
+                                <i class="fas fa-equals" aria-hidden="true"></i>
+                                计算月供
+                            </button>
+                        </form>
+
+                        <div class="calculator-results" id="loan-results" role="region" aria-live="polite" aria-atomic="true">
+                            <p class="placeholder-text">填写贷款金额、利率与期限后，即可查看详细的月供金额及利息明细。</p>
+                        </div>
+                    </div>
+
+                    <aside class="calculator-side">
+                        <div class="info-card">
+                            <h3><i class="fas fa-lightbulb" aria-hidden="true"></i> 使用技巧</h3>
+                            <ul>
+                                <li>适用于商业贷款、公积金贷款及车贷等等额本息还款方式。</li>
+                                <li>如遇调整利率，可重新输入最新利率以获取最新月供。</li>
+                                <li>贷款期限支持小数输入，例如 20.5 年将自动换算为 246 期。</li>
+                            </ul>
+                        </div>
+                        <div class="info-card info-card--accent">
+                            <h3><i class="fas fa-info-circle" aria-hidden="true"></i> 温馨提示</h3>
+                            <p>计算结果仅供参考，实际放款利率会受个人资质、银行政策和市场利率变动影响。请以银行最终出具的还款计划为准。</p>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="calculator-tips">
+                <h3 class="section-title">
+                    <i class="fas fa-compass" aria-hidden="true"></i>
+                    贷款规划建议
+                </h3>
+                <div class="tips-grid">
+                    <div class="info-card info-card--outline">
+                        <h3><i class="fas fa-equals" aria-hidden="true"></i> 等额本息是什么？</h3>
+                        <p>等额本息是最常见的贷款还款方式，每月还款金额固定，前期利息占比高，随着还款推进，本金占比逐渐提升，利息支出逐月减少。</p>
+                    </div>
+                    <div class="info-card info-card--outline">
+                        <h3><i class="fas fa-percentage" aria-hidden="true"></i> 计算结果包含哪些信息？</h3>
+                        <p>系统将展示预计月供、总利息、累计还款额以及前 12 期的利息与本金占比，帮助您直观了解还款结构。</p>
+                    </div>
+                    <div class="info-card info-card--outline">
+                        <h3><i class="fas fa-tasks" aria-hidden="true"></i> 如何降低还款压力？</h3>
+                        <ul>
+                            <li>适度延长贷款期限可降低月供，但总利息会相应增加。</li>
+                            <li>提前部分还款可缩短期限或减少利息支出。</li>
+                            <li>关注 LPR 及银行优惠活动，择机申请更优利率。</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>关于我们</h4>
+                    <p>为您提供最全面的银行服务信息和实用工具，助您合理规划财务。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快捷入口</h4>
+                    <ul>
+                        <li><a href="/index.html">国内银行</a></li>
+                        <li><a href="/credit-cards.html">信用卡申请</a></li>
+                        <li><a href="/exchange-rates.html">实时汇率</a></li>
+                        <li><a href="/loan-interest-calculator.html">贷款利率计算器</a></li>
+                        <li><a href="/credit-card-installment-calculator.html">信用卡分期计算器</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>联系我们</h4>
+                    <p>如有任何问题或建议，欢迎随时通过网站提供的联系方式与我们取得联系。</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 银行卡推荐网站. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="calculators.js"></script>
+</body>
+</html>
