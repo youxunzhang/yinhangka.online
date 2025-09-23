@@ -10,6 +10,7 @@
 - 🔍 **分类展示** - 按银行类型分类显示
 - ✨ **交互动画** - 流畅的悬浮和点击效果
 - 🧮 **贷款与分期计算器** - 在线测算贷款月供与信用卡分期费用
+- 🔎 **BIN 号查询工具** - 输入卡号前几位识别发卡行与卡种
 - 📱 **移动端优化** - 完美适配手机和平板
 
 ## 包含银行列表
@@ -71,9 +72,11 @@
 ├── exchange-rates.html                        # 实时汇率
 ├── loan-interest-calculator.html              # 贷款利率计算器
 ├── credit-card-installment-calculator.html    # 信用卡分期计算器
+├── card-bin-lookup.html                       # 银行卡 BIN 号查询工具
 ├── style.css                                  # 全站样式
 ├── script.js                                  # 基础交互脚本
 ├── calculators.js                             # 计算器功能脚本
+├── bin-lookup.js                              # BIN 号查询脚本
 └── README.md                                  # 使用说明
 ```
 

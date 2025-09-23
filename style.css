@@ -46,7 +46,7 @@ body {
     padding: 8px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    max-width: 900px;
+    max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 2rem;
@@ -1294,6 +1294,235 @@ body {
     border-radius: 999px;
 }
 
+/* BIN 查询工具样式 */
+.bin-results-summary {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.bin-number {
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #2d3748;
+}
+
+.bin-results-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #5a67d8;
+    background: rgba(102, 126, 234, 0.18);
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+}
+
+.bin-results-badge i {
+    font-size: 0.85rem;
+}
+
+.bin-detail-source {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.95rem;
+    color: #4a5568;
+    background: rgba(102, 126, 234, 0.12);
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+}
+
+.bin-detail-source i {
+    color: #5a67d8;
+}
+
+.bin-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.bin-detail-item {
+    background: rgba(255, 255, 255, 0.94);
+    border-radius: 16px;
+    padding: 1.2rem 1.4rem;
+    border: 1px solid rgba(102, 126, 234, 0.25);
+    box-shadow: 0 18px 32px rgba(102, 126, 234, 0.16);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bin-detail-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 36px rgba(102, 126, 234, 0.22);
+}
+
+.bin-detail-label {
+    display: block;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #718096;
+    margin-bottom: 0.4rem;
+}
+
+.bin-detail-value {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #2d3748;
+    word-break: break-word;
+    line-height: 1.4;
+}
+
+.bin-detail-value a {
+    color: #5a67d8;
+    text-decoration: none;
+}
+
+.bin-detail-value a:hover {
+    text-decoration: underline;
+}
+
+.bin-results-note {
+    margin-top: 1.3rem;
+    font-size: 0.92rem;
+    color: #4a5568;
+    line-height: 1.6;
+}
+
+.bin-note-list {
+    margin-top: 0.8rem;
+    padding-left: 1.2rem;
+    font-size: 0.9rem;
+    color: #4a5568;
+    line-height: 1.6;
+}
+
+.bin-note-list li {
+    margin-bottom: 0.35rem;
+}
+
+.bin-history-section {
+    margin-bottom: 4rem;
+}
+
+.bin-history-header {
+    text-align: center;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.bin-history-header p {
+    max-width: 740px;
+    margin: 0.75rem auto 0;
+    font-size: 1.05rem;
+    opacity: 0.85;
+    line-height: 1.8;
+}
+
+.bin-history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.2rem;
+}
+
+.bin-history-item {
+    width: 100%;
+    border: none;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 18px;
+    padding: 1.2rem 1.4rem;
+    text-align: left;
+    box-shadow: 0 16px 34px rgba(31, 41, 55, 0.2);
+    border: 1px solid rgba(102, 126, 234, 0.25);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bin-history-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 36px rgba(102, 126, 234, 0.35);
+}
+
+.bin-history-item:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.25);
+}
+
+.bin-history-bin {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #2d3748;
+    letter-spacing: 0.05em;
+}
+
+.bin-history-bank {
+    margin-top: 0.35rem;
+    font-size: 1rem;
+    color: #4a5568;
+    font-weight: 600;
+}
+
+.bin-history-meta {
+    margin-top: 0.2rem;
+    font-size: 0.9rem;
+    color: #5a67d8;
+    font-weight: 600;
+}
+
+.bin-history-source {
+    margin-top: 0.35rem;
+    font-size: 0.82rem;
+    color: #718096;
+}
+
+.bin-history-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 1.6rem;
+    border-radius: 18px;
+    border: 1px dashed rgba(255, 255, 255, 0.45);
+    color: white;
+    background: rgba(255, 255, 255, 0.08);
+    font-size: 1rem;
+}
+
+.bin-highlight {
+    color: #5a67d8;
+    font-weight: 600;
+}
+
+.bin-history-actions {
+    margin-top: 1.5rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.9rem;
+}
+
+.bin-history-actions button {
+    background: none;
+    border: none;
+    color: #ffd700;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 0.95rem;
+}
+
+.bin-history-actions button:hover {
+    color: #fff5a1;
+}
+
 @media (max-width: 1024px) {
     .calculator-grid {
         grid-template-columns: 1fr;
@@ -1454,6 +1683,23 @@ body {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    .bin-results-summary {
+        align-items: flex-start;
+        gap: 0.6rem 1rem;
+    }
+
+    .bin-details-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+
+    .bin-history-header p {
+        font-size: 0.98rem;
+    }
+
+    .bin-history-list {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
     .tips-grid {
         grid-template-columns: 1fr;
     }
@@ -1516,6 +1762,23 @@ body {
         justify-content: center;
     }
 
+    .bin-results-summary {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .bin-number {
+        font-size: 1.3rem;
+    }
+
+    .bin-history-list {
+        grid-template-columns: 1fr;
+    }
+
+    .bin-history-item {
+        padding: 1rem 1.15rem;
+    }
+
     .info-card {
         padding: 1.4rem;
     }
@@ -1540,29 +1803,37 @@ body {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
     }
-    
+
     .bank-card {
         margin: 0 5px;
         padding: 1rem;
     }
-    
+
     .bank-icon {
         width: 50px;
         height: 50px;
     }
-    
+
     .favicon-img {
         width: 30px;
         height: 30px;
         padding: 2px;
     }
-    
+
     .fallback-text {
         font-size: 1.2rem;
     }
-    
+
     .bank-name {
         font-size: 1.1rem;
+    }
+
+    .bin-detail-value {
+        font-size: 0.95rem;
+    }
+
+    .bin-history-item {
+        padding: 0.9rem 1rem;
     }
 }
 

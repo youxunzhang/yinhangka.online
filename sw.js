@@ -1,16 +1,18 @@
-const CACHE_NAME = 'bank-recommendation-v1.1.0';
+const CACHE_NAME = 'bank-recommendation-v1.2.0';
 const urlsToCache = [
   '/',
   '/index.html',
   '/style.css',
   '/script.js',
   '/calculators.js',
+  '/bin-lookup.js',
   '/manifest.json',
   '/global-banks.html',
   '/credit-cards.html',
   '/exchange-rates.html',
   '/loan-interest-calculator.html',
   '/credit-card-installment-calculator.html',
+  '/card-bin-lookup.html',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'
 ];
 
