@@ -25,7 +25,7 @@ body {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 2rem 0;
+    padding: 1.25rem 0;
     text-align: center;
     color: white;
     position: sticky;
@@ -38,8 +38,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0;
-    margin-bottom: 2rem;
+    gap: 8px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
     border-radius: 60px;
@@ -47,9 +46,8 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 2rem;
+    margin: 0 auto;
+    flex-wrap: wrap;
 }
 
 .nav-link {
@@ -112,24 +110,6 @@ body {
 
 .nav-link.active i {
     color: #667eea;
-}
-
-.logo {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.logo i {
-    color: #ffd700;
-    margin-right: 0.5rem;
-}
-
-.subtitle {
-    font-size: 1.2rem;
-    opacity: 0.9;
-    font-weight: 300;
 }
 
 /* 主要内容 */
@@ -1586,14 +1566,14 @@ body {
     .container {
         padding: 0 15px;
     }
-    
+
     .nav-menu {
         flex-direction: row;
         flex-wrap: wrap;
         gap: 4px;
         padding: 6px;
         max-width: 100%;
-        margin-bottom: 1.5rem;
+        margin-bottom: 0;
     }
     
     .nav-link {
@@ -1611,10 +1591,6 @@ body {
     .nav-link i {
         margin: 0;
         font-size: 1.1rem;
-    }
-    
-    .logo {
-        font-size: 2rem;
     }
     
     .hero-title {
