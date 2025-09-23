@@ -52,6 +52,14 @@
         <priority>0.8</priority>
     </url>
 
+    <!-- 银行卡 BIN 号查询工具 -->
+    <url>
+        <loc>https://yinhangka.online/card-bin-lookup.html</loc>
+        <lastmod>2024-04-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
     <!-- 银行详情页面（动态生成） -->
     <url>
         <loc>https://yinhangka.online/banks/icbc.html</loc>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8794607118520437" crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-8794607118520437">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>银行卡 BIN 号查询工具 - 快速识别发卡行与卡种信息</title>
+    <meta name="description" content="输入银行卡号前 6-8 位即可识别发卡行、卡组织、卡种类型以及支持的国家地区，助您核实银行卡信息。">
+    <meta name="keywords" content="银行卡BIN查询,银行卡归属查询,BIN号查询,发卡行识别,卡组织查询,银行卡工具">
+    <link rel="canonical" href="https://yinhangka.online/card-bin-lookup.html">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>国内银行</span>
+                </a>
+                <a href="global-banks.html" class="nav-link">
+                    <i class="fas fa-globe"></i>
+                    <span>全球银行</span>
+                </a>
+                <a href="credit-cards.html" class="nav-link">
+                    <i class="fas fa-credit-card"></i>
+                    <span>信用卡申请</span>
+                </a>
+                <a href="exchange-rates.html" class="nav-link">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>实时汇率</span>
+                </a>
+                <a href="loan-interest-calculator.html" class="nav-link">
+                    <i class="fas fa-coins"></i>
+                    <span>贷款利率</span>
+                </a>
+                <a href="credit-card-installment-calculator.html" class="nav-link">
+                    <i class="fas fa-calculator"></i>
+                    <span>信用卡分期</span>
+                </a>
+                <a href="card-bin-lookup.html" class="nav-link active">
+                    <i class="fas fa-magnifying-glass"></i>
+                    <span>BIN 查询</span>
+                </a>
+            </nav>
+            <h1 class="logo">
+                <i class="fas fa-barcode"></i>
+                银行卡 BIN 号查询工具
+            </h1>
+            <p class="subtitle">核实发卡行与卡种信息，保障支付安全</p>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="面包屑导航">
+                <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <a href="/" itemprop="item">
+                            <span itemprop="name">首页</span>
+                        </a>
+                        <meta itemprop="position" content="1" />
+                    </li>
+                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <span itemprop="name">银行卡 BIN 号查询</span>
+                        <meta itemprop="position" content="2" />
+                    </li>
+                </ol>
+            </nav>
+
+            <section class="hero">
+                <h2 class="hero-title">输入 BIN 号，快速识别银行卡信息</h2>
+                <p class="hero-description">
+                    BIN（Bank Identification Number）是银行卡号的前 6-8 位，通过查询 BIN 号可以确认银行卡的发卡行、卡组织、卡种类型以及所属国家/地区，帮助您在支付前完成核验。
+                </p>
+            </section>
+
+            <section class="calculator-section">
+                <div class="calculator-grid">
+                    <div class="calculator-card">
+                        <h3 class="calculator-title">
+                            <i class="fas fa-search"></i>
+                            输入 BIN 号进行查询
+                        </h3>
+                        <form id="bin-lookup-form" class="calculator-form" novalidate>
+                            <div class="form-group">
+                                <label for="card-bin">银行卡 BIN 号</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="card-bin" name="card-bin" inputmode="numeric" pattern="[0-9]{6,8}" maxlength="8" autocomplete="off" placeholder="例如 621483" aria-describedby="card-bin-helper" required>
+                                </div>
+                                <p class="form-helper" id="card-bin-helper">请输入银行卡号前 <strong>6-8 位数字</strong>。BIN 号通常印刻在银行卡卡号的最前端，用于识别发卡行与卡组织。</p>
+                            </div>
+                            <button type="submit" class="calculator-submit">
+                                <i class="fas fa-search"></i>
+                                查询 BIN 信息
+                            </button>
+                        </form>
+
+                        <div class="calculator-results" id="bin-results" role="status" aria-live="polite" aria-atomic="true">
+                            <p class="placeholder-text">输入 BIN 号后即可查看发卡行、卡组织、卡种类型以及是否支持 Luhn 校验等详细资料。</p>
+                        </div>
+                    </div>
+
+                    <aside class="calculator-side">
+                        <div class="info-card">
+                            <h3><i class="fas fa-lightbulb"></i> 使用建议</h3>
+                            <ul>
+                                <li>优先输入完整的 6 位 BIN 号，部分银行的 BIN 会延伸到 8 位。</li>
+                                <li>如需确认跨境卡片，可留意卡组织及所属国家信息。</li>
+                                <li>查询结果可用于核实网购、绑定支付或识别未知来历的银行卡。</li>
+                            </ul>
+                        </div>
+                        <div class="info-card info-card--accent">
+                            <h3><i class="fas fa-shield-alt"></i> 隐私与安全提示</h3>
+                            <p>本工具仅需前 6-8 位 BIN 号即可完成查询，无需提交完整卡号。请勿在公共场合泄露完整的银行卡信息，保障个人资金安全。</p>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="bin-history-section">
+                <div class="bin-history-header">
+                    <h3 class="section-title">
+                        <i class="fas fa-clock-rotate-left"></i>
+                        查询记录
+                    </h3>
+                    <p>最近查询的 BIN 会保存在本设备中，方便您快速再次核实相关银行卡信息。点击记录即可重新加载详情。</p>
+                </div>
+                <ul class="bin-history-list" id="bin-history-list" aria-live="polite" aria-atomic="false">
+                    <li class="bin-history-empty">暂无查询记录，输入 BIN 号即可开始。</li>
+                </ul>
+                <div class="bin-history-actions">
+                    <button type="button" id="clear-bin-history">清空本地记录</button>
+                </div>
+            </section>
+
+            <section class="calculator-tips">
+                <h3 class="section-title">
+                    <i class="fas fa-circle-info"></i>
+                    BIN 号常见问题解答
+                </h3>
+                <div class="tips-grid">
+                    <div class="info-card info-card--outline">
+                        <h3><i class="fas fa-question-circle"></i> BIN 号包含哪些信息？</h3>
+                        <p>BIN 号可用于识别发卡银行、卡组织（如银联、VISA、Mastercard 等）、卡片类型（借记卡、信用卡、预付卡）以及卡号长度是否符合 Luhn 校验等特征。</p>
+                    </div>
+                    <div class="info-card info-card--outline">
+                        <h3><i class="fas fa-sitemap"></i> 为什么查询结果可能不完整？</h3>
+                        <p>部分新发行或地区性银行的 BIN 数据可能未完整收录。遇到缺失信息时，可联系发卡银行客服核实或尝试输入更长的 8 位 BIN。</p>
+                    </div>
+                    <div class="info-card info-card--accent">
+                        <h3><i class="fas fa-user-shield"></i> 如何安全使用查询结果？</h3>
+                        <ul>
+                            <li>确认收款方提供的银行卡信息是否与查询结果一致。</li>
+                            <li>核实陌生银行卡来源，避免卷入诈骗或洗钱风险。</li>
+                            <li>遇到疑似风险卡片时，及时联系发卡银行或支付平台客服。</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>关于我们</h4>
+                    <p>为您提供最全面的银行服务信息和实用工具，帮助您安全、高效地处理银行卡事务。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快捷入口</h4>
+                    <ul>
+                        <li><a href="/index.html">国内银行</a></li>
+                        <li><a href="/credit-cards.html">信用卡申请</a></li>
+                        <li><a href="/exchange-rates.html">实时汇率</a></li>
+                        <li><a href="/loan-interest-calculator.html">贷款利率计算器</a></li>
+                        <li><a href="/credit-card-installment-calculator.html">信用卡分期计算器</a></li>
+                        <li><a href="/card-bin-lookup.html">BIN 号查询工具</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>联系我们</h4>
+                    <p>如有任何问题或建议，欢迎随时通过网站提供的联系方式与我们取得联系。</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 银行卡推荐网站. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="bin-lookup.js"></script>
+</body>
+</html>
