@@ -1,5 +1,5 @@
-const CACHE_NAME = 'bank-recommendation-v1.2.0';
-const urlsToCache = [
+const CACHE_NAME = 'bank-recommendation-v1.3.0';
+const PRECACHE_URLS = [
   '/',
   '/index.html',
   '/style.css',
@@ -13,17 +13,16 @@ const urlsToCache = [
   '/loan-interest-calculator.html',
   '/credit-card-installment-calculator.html',
   '/card-bin-lookup.html',
+  '/faq.html',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'
 ];
 
 // 安装Service Worker
 self.addEventListener('install', event => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => {
-        console.log('Opened cache');
-        return cache.addAll(urlsToCache);
-      })
+      .then(cache => cache.addAll(PRECACHE_URLS))
   );
 });
 
@@ -37,42 +36,56 @@ self.addEventListener('activate', event => {
             console.log('Deleting old cache:', cacheName);
             return caches.delete(cacheName);
           }
+          return null;
         })
       );
-    })
+    }).then(() => self.clients.claim())
   );
 });
 
 // 拦截网络请求
 self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // 如果缓存中有响应，返回缓存的响应
-        if (response) {
+  if (event.request.method !== 'GET') {
+    return;
+  }
+
+  // 对导航请求使用网络优先策略，确保页面始终获取最新内容
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          const responseClone = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, responseClone));
           return response;
-        }
-        
-        // 否则从网络获取
-        return fetch(event.request).then(
-          response => {
-            // 检查是否收到有效响应
-            if(!response || response.status !== 200 || response.type !== 'basic') {
-              return response;
-            }
+        })
+        .catch(() => {
+          return caches.match(event.request).then(cachedResponse => {
+            return cachedResponse || caches.match('/index.html');
+          });
+        })
+    );
+    return;
+  }
 
-            // 克隆响应
-            const responseToCache = response.clone();
+  event.respondWith(
+    caches.match(event.request).then(response => {
+      if (response) {
+        return response;
+      }
 
-            caches.open(CACHE_NAME)
-              .then(cache => {
-                cache.put(event.request, responseToCache);
-              });
-
-            return response;
+      return fetch(event.request)
+        .then(networkResponse => {
+          if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
+            return networkResponse;
           }
-        );
-      })
+
+          const responseToCache = networkResponse.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, responseToCache));
+
+          return networkResponse;
+        })
+        .catch(() => caches.match(event.request));
+    })
   );
 });
 
