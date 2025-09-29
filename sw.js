@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bank-recommendation-v1.3.0';
+const CACHE_NAME = 'bank-recommendation-v1.4.0';
 const PRECACHE_URLS = [
   '/',
   '/index.html',
@@ -14,6 +14,9 @@ const PRECACHE_URLS = [
   '/credit-card-installment-calculator.html',
   '/card-bin-lookup.html',
   '/faq.html',
+  '/picturesize/index.html',
+  '/terms.html',
+  '/search/index.html',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'
 ];
 
