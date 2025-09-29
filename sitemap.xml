@@ -67,6 +67,27 @@
     </url>
 
     <url>
+        <loc>https://yinhangka.online/picturesize/</loc>
+        <lastmod>2025-09-29</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://yinhangka.online/terms.html</loc>
+        <lastmod>2025-09-29</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+
+    <url>
+        <loc>https://yinhangka.online/search/</loc>
+        <lastmod>2025-09-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
         <loc>https://yinhangka.online/favicon-demo.html</loc>
         <lastmod>2025-09-23</lastmod>
         <changefreq>yearly</changefreq>
