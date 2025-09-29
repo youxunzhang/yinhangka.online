@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8794607118520437" crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-8794607118520437">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多功能计算器 - 在线科学计算与快捷运算工具</title>
+    <meta name="description" content="多功能计算器支持加减乘除、百分比、括号、平方、开方等常见科学运算，帮助您快速完成日常数学计算。">
+    <meta name="keywords" content="计算器,在线计算器,科学计算器,百分比计算,平方根计算,数学运算">
+    <link rel="canonical" href="https://yinhangka.online/math-calculator.html">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>国内银行</span>
+                </a>
+                <a href="global-banks.html" class="nav-link">
+                    <i class="fas fa-globe"></i>
+                    <span>全球银行</span>
+                </a>
+                <a href="credit-cards.html" class="nav-link">
+                    <i class="fas fa-credit-card"></i>
+                    <span>信用卡申请</span>
+                </a>
+                <a href="exchange-rates.html" class="nav-link">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>实时汇率</span>
+                </a>
+                <a href="loan-interest-calculator.html" class="nav-link">
+                    <i class="fas fa-coins"></i>
+                    <span>贷款利率</span>
+                </a>
+                <a href="credit-card-installment-calculator.html" class="nav-link">
+                    <i class="fas fa-calculator"></i>
+                    <span>信用卡分期</span>
+                </a>
+                <a href="math-calculator.html" class="nav-link active">
+                    <i class="fas fa-square-root-variable"></i>
+                    <span>多功能计算</span>
+                </a>
+                <a href="rmb-uppercase.html" class="nav-link">
+                    <i class="fas fa-yen-sign"></i>
+                    <span>人民币大写</span>
+                </a>
+                <a href="card-bin-lookup.html" class="nav-link">
+                    <i class="fas fa-magnifying-glass"></i>
+                    <span>BIN 查询</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="面包屑导航">
+                <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <a href="/" itemprop="item">
+                            <span itemprop="name">首页</span>
+                        </a>
+                        <meta itemprop="position" content="1" />
+                    </li>
+                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <span itemprop="name">多功能计算器</span>
+                        <meta itemprop="position" content="2" />
+                    </li>
+                </ol>
+            </nav>
+
+            <section class="hero">
+                <h1 class="hero-title">多功能科学计算器</h1>
+                <p class="hero-description">
+                    集成常见数学运算、百分比转换、平方根与倒数计算的在线工具。
+                    支持键盘输入、自动结果预览与历史记录，让日常计算更高效、更直观。
+                </p>
+            </section>
+
+            <section class="calculator-section">
+                <div class="calculator-grid">
+                    <div class="calculator-card">
+                        <h3 class="calculator-title">
+                            <i class="fas fa-sliders-h" aria-hidden="true"></i>
+                            即时输入与预览
+                        </h3>
+
+                        <div class="general-calculator" data-calculator>
+                            <div class="general-calculator__display">
+                                <div class="general-calculator__expression" data-expression>0</div>
+                                <div class="general-calculator__preview" data-preview>预览：0</div>
+                            </div>
+
+                            <div class="general-calculator__status" data-calculator-status role="status" aria-live="polite"></div>
+
+                            <div class="general-calculator__utilities">
+                                <button type="button" class="calc-utility" data-action="copy">
+                                    <i class="fas fa-copy" aria-hidden="true"></i>
+                                    复制结果
+                                </button>
+                                <button type="button" class="calc-utility" data-action="clear-history">
+                                    <i class="fas fa-broom" aria-hidden="true"></i>
+                                    清除历史
+                                </button>
+                            </div>
+
+                            <div class="general-calculator__keyboard">
+                                <button type="button" class="calc-btn calc-btn--muted" data-action="clear">AC</button>
+                                <button type="button" class="calc-btn calc-btn--muted" data-action="delete">退格</button>
+                                <button type="button" class="calc-btn calc-btn--muted" data-value="(">(</button>
+                                <button type="button" class="calc-btn calc-btn--muted" data-value=")">)</button>
+
+                                <button type="button" class="calc-btn calc-btn--muted" data-action="square">x²</button>
+                                <button type="button" class="calc-btn calc-btn--muted" data-action="sqrt">√x</button>
+                                <button type="button" class="calc-btn calc-btn--muted" data-action="reciprocal">1/x</button>
+                                <button type="button" class="calc-btn calc-btn--muted" data-action="percent">%</button>
+
+                                <button type="button" class="calc-btn" data-value="7">7</button>
+                                <button type="button" class="calc-btn" data-value="8">8</button>
+                                <button type="button" class="calc-btn" data-value="9">9</button>
+                                <button type="button" class="calc-btn calc-btn--accent" data-value="/">÷</button>
+
+                                <button type="button" class="calc-btn" data-value="4">4</button>
+                                <button type="button" class="calc-btn" data-value="5">5</button>
+                                <button type="button" class="calc-btn" data-value="6">6</button>
+                                <button type="button" class="calc-btn calc-btn--accent" data-value="*">×</button>
+
+                                <button type="button" class="calc-btn" data-value="1">1</button>
+                                <button type="button" class="calc-btn" data-value="2">2</button>
+                                <button type="button" class="calc-btn" data-value="3">3</button>
+                                <button type="button" class="calc-btn calc-btn--accent" data-value="-">−</button>
+
+                                <button type="button" class="calc-btn calc-btn--muted" data-action="negate">±</button>
+                                <button type="button" class="calc-btn" data-value="0">0</button>
+                                <button type="button" class="calc-btn" data-value=".">.</button>
+                                <button type="button" class="calc-btn calc-btn--primary" data-action="equals">=</button>
+                            </div>
+                        </div>
+
+                        <div class="calculator-results general-calculator__history">
+                            <h4><i class="fas fa-clock" aria-hidden="true"></i> 最近计算记录</h4>
+                            <ul class="calc-history" data-calculator-history>
+                                <li class="calc-history__placeholder">暂无历史记录，开始输入查看结果吧。</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <aside class="calculator-side">
+                        <div class="info-card">
+                            <h3><i class="fas fa-keyboard" aria-hidden="true"></i> 键盘快捷键</h3>
+                            <ul>
+                                <li>直接在键盘输入数字与运算符，页面将自动同步更新。</li>
+                                <li>按下 Enter 键等同于点击“=”按钮，Esc 键可快速清空。</li>
+                                <li>支持使用 Backspace 键删除一位字符，便捷修正表达式。</li>
+                            </ul>
+                        </div>
+                        <div class="info-card info-card--accent">
+                            <h3><i class="fas fa-info-circle" aria-hidden="true"></i> 使用提醒</h3>
+                            <p>本工具采用安全计算逻辑，仅支持数字、括号及基础运算符。若输入非法字符，将自动提示并阻止执行。</p>
+                        </div>
+                        <div class="info-card info-card--outline">
+                            <h3><i class="fas fa-lightbulb" aria-hidden="true"></i> 适用场景</h3>
+                            <ul>
+                                <li>日常记账、购物折扣或税费换算。</li>
+                                <li>学业作业中涉及的基础数学运算。</li>
+                                <li>金融计算前的快速验证与估算。</li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="calculator-tips">
+                <h3 class="section-title">
+                    <i class="fas fa-compass" aria-hidden="true"></i>
+                    计算器功能亮点
+                </h3>
+                <div class="tips-grid">
+                    <div class="info-card info-card--outline">
+                        <h3><i class="fas fa-percentage" aria-hidden="true"></i> 百分比自动换算</h3>
+                        <p>输入 125% 或 0.125% 等表达式，系统自动转换为小数形式并给出准确结果。</p>
+                    </div>
+                    <div class="info-card info-card--outline">
+                        <h3><i class="fas fa-square-root-alt" aria-hidden="true"></i> 高级函数一键完成</h3>
+                        <p>平方、开方、倒数、取负等常用进阶运算提供快捷按钮，避免重复输入。</p>
+                    </div>
+                    <div class="info-card info-card--outline">
+                        <h3><i class="fas fa-history" aria-hidden="true"></i> 历史记录追溯</h3>
+                        <p>最多保留最近 10 条计算，点击复制即可快速引用结果，提升处理效率。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="faq-section">
+                <div class="faq-grid">
+                    <div class="faq-card">
+                        <h3><i class="fas fa-question-circle" aria-hidden="true"></i> 结果出现 NaN 或 Infinity 怎么办？</h3>
+                        <p>说明计算中存在除以 0 或表达式不完整的情况，请检查是否输入了连续运算符或缺失括号。</p>
+                    </div>
+                    <div class="faq-card">
+                        <h3><i class="fas fa-question-circle" aria-hidden="true"></i> 可以计算多复杂的式子？</h3>
+                        <p>支持多层括号嵌套及组合运算，但为了保证准确性，不建议输入超过 30 个字符的超长表达式。</p>
+                    </div>
+                    <div class="faq-card">
+                        <h3><i class="fas fa-question-circle" aria-hidden="true"></i> 如何将结果用于贷款或信用卡计算？</h3>
+                        <p>可在本页面完成基础运算后，将结果复制到贷款利率或信用卡分期计算器中继续规划。</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>关于我们</h4>
+                    <p>为您提供最全面的银行服务信息和实用工具，助您合理规划财务。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快捷入口</h4>
+                    <ul>
+                        <li><a href="/index.html">国内银行</a></li>
+                        <li><a href="/credit-cards.html">信用卡申请</a></li>
+                        <li><a href="/exchange-rates.html">实时汇率</a></li>
+                        <li><a href="/loan-interest-calculator.html">贷款利率计算器</a></li>
+                        <li><a href="/credit-card-installment-calculator.html">信用卡分期计算器</a></li>
+                        <li><a href="/math-calculator.html">多功能计算器</a></li>
+                        <li><a href="/rmb-uppercase.html">人民币大小写对照</a></li>
+                        <li><a href="/card-bin-lookup.html">BIN 号查询工具</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>联系我们</h4>
+                    <p>如有任何问题或建议，欢迎随时通过网站提供的联系方式与我们取得联系。</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 银行卡推荐网站. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="calculators.js"></script>
+</body>
+</html>

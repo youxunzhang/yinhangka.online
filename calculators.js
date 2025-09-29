@@ -18,6 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
         maximumFractionDigits: 0
     });
 
+    const generalNumberFormatter = new Intl.NumberFormat('zh-CN', {
+        maximumFractionDigits: 12,
+        useGrouping: true
+    });
+
     const sanitizeNumber = (value, fallback = 0) => (Number.isFinite(value) ? value : fallback);
     const clampToZero = (value) => {
         if (!Number.isFinite(value)) {
@@ -30,6 +35,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const formatCurrency = (value) => currencyFormatter.format(sanitizeNumber(value));
     const formatPercent = (value) => `${decimalFormatter.format(sanitizeNumber(value))}%`;
     const formatInteger = (value) => integerFormatter.format(sanitizeNumber(value));
+    const formatGeneralNumber = (value) => {
+        if (!Number.isFinite(value)) {
+            return '—';
+        }
+
+        const absValue = Math.abs(value);
+
+        if (absValue !== 0 && (absValue >= 1e12 || absValue < 1e-6)) {
+            return value.toExponential(6).replace('+', '');
+        }
+
+        return generalNumberFormatter.format(value);
+    };
+
+    const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (match) => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+    })[match]);
 
     const renderError = (container, message) => {
         container.innerHTML = `
@@ -331,5 +357,554 @@ document.addEventListener('DOMContentLoaded', () => {
                 calculateInstallment();
             }
         });
+    }
+
+    // 通用科学计算器
+    const generalCalculatorElement = document.querySelector('[data-calculator]');
+
+    if (generalCalculatorElement) {
+        const expressionElement = generalCalculatorElement.querySelector('[data-expression]');
+        const previewElement = generalCalculatorElement.querySelector('[data-preview]');
+        const statusElement = generalCalculatorElement.querySelector('[data-calculator-status]');
+        const utilitiesElement = generalCalculatorElement.querySelector('.general-calculator__utilities');
+        const historyList = generalCalculatorElement.closest('.calculator-card')
+            ? generalCalculatorElement.closest('.calculator-card').querySelector('[data-calculator-history]')
+            : null;
+
+        let expression = '';
+        let previewValue = 0;
+        let lastAction = 'input';
+        const history = [];
+
+        const isOperator = (value) => ['+', '-', '*', '/'].includes(value);
+
+        const formatDisplayExpression = (value) => value
+            .replace(/\*/g, '×')
+            .replace(/\//g, '÷')
+            .replace(/\(/g, '（')
+            .replace(/\)/g, '）');
+
+        const clearStatus = () => {
+            if (statusElement) {
+                statusElement.textContent = '';
+                statusElement.className = 'general-calculator__status';
+            }
+        };
+
+        const showStatus = (message, variant = 'info') => {
+            if (!statusElement) {
+                return;
+            }
+
+            statusElement.textContent = message;
+            statusElement.className = `general-calculator__status general-calculator__status--${variant}`;
+        };
+
+        const updateDisplay = () => {
+            if (expressionElement) {
+                expressionElement.textContent = expression || '0';
+            }
+        };
+
+        const evaluateExpression = (rawExpression) => {
+            const normalized = rawExpression.replace(/\s+/g, '');
+
+            if (!normalized) {
+                return 0;
+            }
+
+            if (!/^[0-9+\-*/().%]*$/.test(normalized)) {
+                throw new Error('表达式包含非法字符。');
+            }
+
+            const percentConverted = normalized.replace(/(\d+(?:\.\d+)?)%/g, '($1/100)');
+            // eslint-disable-next-line no-new-func
+            const result = Function(`"use strict"; return (${percentConverted});`)();
+
+            if (!Number.isFinite(result)) {
+                throw new Error('结果无效，请检查输入。');
+            }
+
+            return result;
+        };
+
+        const updatePreview = () => {
+            if (!previewElement) {
+                return;
+            }
+
+            if (!expression) {
+                previewValue = 0;
+                previewElement.textContent = '预览：0';
+                clearStatus();
+                return;
+            }
+
+            try {
+                const value = evaluateExpression(expression);
+                previewValue = value;
+                previewElement.textContent = `预览：${formatGeneralNumber(value)}`;
+                clearStatus();
+            } catch (error) {
+                previewValue = null;
+                previewElement.textContent = '预览：--';
+            }
+        };
+
+        const recordHistory = (raw, result, displayOverride = null) => {
+            if (!historyList) {
+                return;
+            }
+
+            const displayExpression = displayOverride || formatDisplayExpression(raw);
+            const historyItem = {
+                raw,
+                display: displayExpression,
+                result
+            };
+
+            history.unshift(historyItem);
+
+            if (history.length > 10) {
+                history.pop();
+            }
+
+            if (!history.length) {
+                historyList.innerHTML = '<li class="calc-history__placeholder">暂无历史记录，开始输入查看结果吧。</li>';
+                return;
+            }
+
+            const historyHtml = history.map((item) => {
+                const encodedExpression = encodeURIComponent(item.raw);
+                const encodedResult = Number.isFinite(item.result)
+                    ? Number(item.result).toString()
+                    : '0';
+
+                return `
+                    <li class="calc-history__item" data-history-item data-expression="${encodedExpression}" data-result="${encodedResult}">
+                        <span class="calc-history__expression">${escapeHtml(item.display)}</span>
+                        <span class="calc-history__equals">=</span>
+                        <span class="calc-history__result">${formatGeneralNumber(item.result)}</span>
+                        <button type="button" class="calc-history__copy" data-history-copy aria-label="复制结果">
+                            <i class="fas fa-copy" aria-hidden="true"></i>
+                        </button>
+                    </li>
+                `;
+            }).join('');
+
+            historyList.innerHTML = historyHtml || '<li class="calc-history__placeholder">暂无历史记录，开始输入查看结果吧。</li>';
+        };
+
+        const copyToClipboard = async (text) => {
+            try {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    await navigator.clipboard.writeText(text);
+                    return true;
+                }
+            } catch (error) {
+                // 忽略错误并尝试后备方案
+            }
+
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.setAttribute('readonly', 'readonly');
+            textarea.style.position = 'absolute';
+            textarea.style.left = '-9999px';
+            document.body.appendChild(textarea);
+
+            let succeeded = false;
+
+            try {
+                textarea.select();
+                succeeded = document.execCommand('copy');
+            } catch (error) {
+                succeeded = false;
+            }
+
+            textarea.remove();
+
+            return succeeded;
+        };
+
+        const resetCalculator = () => {
+            expression = '';
+            previewValue = 0;
+            lastAction = 'input';
+            updateDisplay();
+            updatePreview();
+        };
+
+        const handleAppendValue = (value) => {
+            if (!value) {
+                return;
+            }
+
+            if (lastAction === 'evaluate' && !isOperator(value) && value !== ')' && value !== '%') {
+                expression = '';
+            }
+
+            lastAction = 'input';
+
+            if (value === '.') {
+                const parts = expression.split(/[+\-*/()%]/);
+                const lastPart = parts[parts.length - 1];
+
+                if (lastPart && lastPart.includes('.')) {
+                    return;
+                }
+
+                if (!expression || /[()+\-*/]$/.test(expression)) {
+                    expression += '0.';
+                } else {
+                    expression += '.';
+                }
+
+                updateDisplay();
+                updatePreview();
+                return;
+            }
+
+            if (value === '(') {
+                if (!expression || /[+\-*/(]$/.test(expression)) {
+                    expression += '(';
+                } else {
+                    expression += '*(';
+                }
+
+                updateDisplay();
+                updatePreview();
+                return;
+            }
+
+            if (value === ')') {
+                const openCount = (expression.match(/\(/g) || []).length;
+                const closeCount = (expression.match(/\)/g) || []).length;
+                const lastChar = expression.slice(-1);
+
+                if (openCount > closeCount && !isOperator(lastChar) && lastChar !== '(') {
+                    expression += ')';
+                    updateDisplay();
+                    updatePreview();
+                }
+
+                return;
+            }
+
+            if (isOperator(value)) {
+                if (!expression) {
+                    if (value === '-') {
+                        expression = '-';
+                    }
+                } else if (isOperator(expression.slice(-1))) {
+                    expression = `${expression.slice(0, -1)}${value}`;
+                } else {
+                    expression += value;
+                }
+
+                updateDisplay();
+                updatePreview();
+                return;
+            }
+
+            if (value === '%') {
+                const lastChar = expression.slice(-1);
+
+                if (!lastChar || /[+\-*/(]/.test(lastChar)) {
+                    showStatus('请在数字或右括号后使用百分比。', 'error');
+                    return;
+                }
+
+                if (lastChar === '%') {
+                    showStatus('请勿连续输入百分号。', 'error');
+                    return;
+                }
+
+                expression += '%';
+                updateDisplay();
+                updatePreview();
+                return;
+            }
+
+            if (expression === '0' && value !== '.') {
+                expression = value;
+            } else {
+                expression += value;
+            }
+
+            updateDisplay();
+            updatePreview();
+        };
+
+        const handleDelete = () => {
+            if (!expression) {
+                return;
+            }
+
+            expression = expression.slice(0, -1);
+            lastAction = 'input';
+            updateDisplay();
+            updatePreview();
+        };
+
+        const handleEquals = () => {
+            if (!expression) {
+                showStatus('请输入需要计算的表达式。', 'error');
+                return;
+            }
+
+            try {
+                const displayExpression = formatDisplayExpression(expression);
+                const result = evaluateExpression(expression);
+                const normalized = Number(result.toPrecision(12));
+                expression = Number.isFinite(normalized) ? normalized.toString() : '0';
+                previewValue = normalized;
+                lastAction = 'evaluate';
+                updateDisplay();
+                updatePreview();
+                recordHistory(expression, normalized, displayExpression);
+                showStatus('计算完成，结果已更新。', 'success');
+            } catch (error) {
+                showStatus(error.message || '计算失败，请检查输入。', 'error');
+            }
+        };
+
+        const applyUnaryOperation = (operation) => {
+            if (!Number.isFinite(previewValue)) {
+                showStatus('表达式不完整，无法执行该操作。', 'error');
+                return;
+            }
+
+            const baseDisplay = expression ? formatDisplayExpression(expression) : formatGeneralNumber(previewValue);
+            let result;
+            let displayLabel;
+            let successMessage;
+
+            if (operation === 'negate') {
+                result = -previewValue;
+                displayLabel = `±(${baseDisplay})`;
+                successMessage = '已取相反数。';
+            } else if (operation === 'square') {
+                result = previewValue * previewValue;
+                displayLabel = `${baseDisplay}²`;
+                successMessage = '平方计算完成。';
+            } else if (operation === 'sqrt') {
+                if (previewValue < 0) {
+                    showStatus('负数无法开平方，请检查输入。', 'error');
+                    return;
+                }
+
+                result = Math.sqrt(previewValue);
+                displayLabel = `√(${baseDisplay})`;
+                successMessage = '平方根计算完成。';
+            } else if (operation === 'reciprocal') {
+                if (previewValue === 0) {
+                    showStatus('0 没有倒数，请先输入其他数值。', 'error');
+                    return;
+                }
+
+                result = 1 / previewValue;
+                displayLabel = `1/(${baseDisplay})`;
+                successMessage = '倒数计算完成。';
+            } else {
+                return;
+            }
+
+            if (!Number.isFinite(result)) {
+                showStatus('结果无效，请检查输入。', 'error');
+                return;
+            }
+
+            const normalized = Number(result.toPrecision(12));
+            expression = normalized.toString();
+            previewValue = normalized;
+            lastAction = 'evaluate';
+            updateDisplay();
+            updatePreview();
+            recordHistory(expression, normalized, displayLabel);
+            showStatus(successMessage, 'success');
+        };
+
+        const handleCopy = () => {
+            if (!Number.isFinite(previewValue)) {
+                showStatus('暂无可复制的结果，请先完成计算。', 'error');
+                return;
+            }
+
+            const text = Number(previewValue.toPrecision(12)).toString();
+
+            copyToClipboard(text).then((succeeded) => {
+                if (succeeded) {
+                    showStatus('结果已复制到剪贴板。', 'success');
+                } else {
+                    showStatus('复制失败，请手动选择文本。', 'error');
+                }
+            });
+        };
+
+        const clearHistoryRecords = () => {
+            history.length = 0;
+
+            if (historyList) {
+                historyList.innerHTML = '<li class="calc-history__placeholder">暂无历史记录，开始输入查看结果吧。</li>';
+            }
+
+            showStatus('历史记录已清空。', 'info');
+        };
+
+        generalCalculatorElement.addEventListener('click', (event) => {
+            const button = event.target.closest('.calc-btn');
+
+            if (!button) {
+                return;
+            }
+
+            const { action } = button.dataset;
+            const { value } = button.dataset;
+
+            if (action === 'clear') {
+                resetCalculator();
+                showStatus('已清空表达式。', 'info');
+                return;
+            }
+
+            if (action === 'delete') {
+                handleDelete();
+                return;
+            }
+
+            if (action === 'equals') {
+                handleEquals();
+                return;
+            }
+
+            if (action === 'negate' || action === 'square' || action === 'sqrt' || action === 'reciprocal') {
+                applyUnaryOperation(action);
+                return;
+            }
+
+            if (action === 'percent') {
+                handleAppendValue('%');
+                return;
+            }
+
+            if (typeof value === 'string') {
+                handleAppendValue(value);
+            }
+        });
+
+        if (utilitiesElement) {
+            utilitiesElement.addEventListener('click', (event) => {
+                const button = event.target.closest('.calc-utility');
+
+                if (!button) {
+                    return;
+                }
+
+                if (button.dataset.action === 'copy') {
+                    handleCopy();
+                } else if (button.dataset.action === 'clear-history') {
+                    clearHistoryRecords();
+                }
+            });
+        }
+
+        if (historyList) {
+            historyList.addEventListener('click', (event) => {
+                const copyButton = event.target.closest('[data-history-copy]');
+
+                if (copyButton) {
+                    const item = copyButton.closest('[data-history-item]');
+
+                    if (!item) {
+                        return;
+                    }
+
+                    const value = Number(item.dataset.result);
+                    const text = Number.isFinite(value) ? Number(value.toPrecision(12)).toString() : '0';
+
+                    copyToClipboard(text).then((succeeded) => {
+                        if (succeeded) {
+                            showStatus('结果已复制到剪贴板。', 'success');
+                        } else {
+                            showStatus('复制失败，请手动选择文本。', 'error');
+                        }
+                    });
+
+                    event.stopPropagation();
+                    return;
+                }
+
+                const item = event.target.closest('[data-history-item]');
+
+                if (!item) {
+                    return;
+                }
+
+                try {
+                    const rawExpression = decodeURIComponent(item.dataset.expression || '');
+
+                    if (rawExpression) {
+                        expression = rawExpression;
+                        lastAction = 'history';
+                        updateDisplay();
+                        updatePreview();
+                        showStatus('已载入历史记录，可继续编辑。', 'info');
+                    }
+                } catch (error) {
+                    showStatus('历史记录解析失败，请手动输入。', 'error');
+                }
+            });
+        }
+
+        document.addEventListener('keydown', (event) => {
+            const activeElement = document.activeElement;
+
+            if (activeElement && (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA' || activeElement.isContentEditable)) {
+                return;
+            }
+
+            if (event.key >= '0' && event.key <= '9') {
+                handleAppendValue(event.key);
+                return;
+            }
+
+            if (['+', '-', '*', '/'].includes(event.key)) {
+                handleAppendValue(event.key);
+                event.preventDefault();
+                return;
+            }
+
+            if (event.key === 'Enter') {
+                handleEquals();
+                event.preventDefault();
+                return;
+            }
+
+            if (event.key === 'Backspace') {
+                handleDelete();
+                return;
+            }
+
+            if (event.key === 'Escape') {
+                resetCalculator();
+                showStatus('已清空表达式。', 'info');
+                return;
+            }
+
+            if (event.key === '.') {
+                handleAppendValue('.');
+            } else if (event.key === '(' || event.key === ')') {
+                handleAppendValue(event.key);
+            } else if (event.key === '%') {
+                handleAppendValue('%');
+            }
+        });
+
+        // 初始化显示
+        resetCalculator();
+
+        if (historyList) {
+            historyList.innerHTML = '<li class="calc-history__placeholder">暂无历史记录，开始输入查看结果吧。</li>';
+        }
     }
 });
