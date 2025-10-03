@@ -7,7 +7,10 @@
 	 <meta name="google-adsense-account" content="ca-pub-8794607118520437">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>实时汇率查询 - 全球货币汇率转换</title>
+    <title>实时汇率查询 - 美元、欧元、人民币在线换算</title>
+    <meta name="description" content="实时查询人民币兑美元、欧元、日元等主要货币汇率，支持在线换算、历史走势图与多币种牌价，帮您掌握跨境支付与投资成本。">
+    <meta name="keywords" content="实时汇率,人民币兑美元,人民币兑欧元,美元换算,汇率计算器,货币转换">
+    <meta name="robots" content="index, follow">
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -59,7 +62,8 @@
         <div class="container">
             <section class="hero">
                 <h1 class="hero-title">实时汇率查询</h1>
-                <p class="hero-description">全球主要货币实时汇率转换</p>
+                <h2 class="hero-subtitle">美元兑人民币 · 欧元兑人民币 · 人民币在线换算</h2>
+                <p class="hero-description">实时同步全球外汇市场数据，支持人民币与美元、欧元、日元、英镑、港币等主流货币的换算与历史走势分析。</p>
             </section>
 
             <!-- 汇率转换器 -->
@@ -130,10 +134,10 @@
 
             <!-- 主要货币汇率表 -->
             <section class="rates-section">
-                <h3 class="section-title">
+                <h2 class="section-title">
                     <i class="fas fa-table"></i>
                     主要货币汇率
-                </h3>
+                </h2>
                 <div class="rates-table-container">
                     <table class="rates-table">
                         <thead>
@@ -155,10 +159,10 @@
 
             <!-- 汇率走势图 -->
             <section class="chart-section">
-                <h3 class="section-title">
+                <h2 class="section-title">
                     <i class="fas fa-chart-area"></i>
                     汇率走势
-                </h3>
+                </h2>
                 <div class="chart-container">
                     <div class="chart-controls">
                         <select id="chart-currency-pair">
@@ -188,12 +192,33 @@
 
             <!-- 汇率新闻 -->
             <section class="news-section">
-                <h3 class="section-title">
+                <h2 class="section-title">
                     <i class="fas fa-newspaper"></i>
                     汇率资讯
-                </h3>
+                </h2>
                 <div class="news-grid" id="exchange-news">
                     <!-- 新闻内容将通过JavaScript动态加载 -->
+                </div>
+            </section>
+
+            <section class="seo-section">
+                <h2 class="section-title">
+                    <i class="fas fa-circle-info"></i>
+                    汇率常见问题解答
+                </h2>
+                <div class="seo-content">
+                    <h3>人民币兑美元、欧元等汇率多久更新一次？</h3>
+                    <p>平台定时从主流外汇数据服务商获取最新牌价，并与商业银行公布的现汇买入价、卖出价进行对比，通常每 60 秒刷新一次。若市场波动剧烈，我们会自动缩短刷新周期以确保数据时效。</p>
+                    <h3>如何正确使用在线汇率换算器？</h3>
+                    <p>在金额输入框中填写需要换算的数值，选择原始货币与目标货币后即可查看实时换算结果。点击中间的互换按钮可快速交换货币方向，方便对比不同兑换场景。</p>
+                    <h3>跨境支付还需要关注哪些成本？</h3>
+                    <ul class="seo-list">
+                        <li>银行或支付平台可能收取固定手续费或按比例扣费，建议提前向开户行咨询。</li>
+                        <li>信用卡外币消费除汇率外，还可能产生 1%~3% 的额外手续费。</li>
+                        <li>大额汇款需准备收款银行的 SWIFT/BIC 代码、账户名称以及详细地址，避免因信息缺失导致退汇。</li>
+                        <li>关注结售汇额度及监管要求，合理安排购汇时间以降低汇率波动风险。</li>
+                    </ul>
+                    <p>如需长期跟踪特定货币走势，可结合我们的 <a href="cny-to-usd-exchange-rate.html">人民币兑美元</a> 与 <a href="cny-to-eur-exchange-rate.html">人民币兑欧元</a> 专题页面，获取更详尽的市场解读与历史数据。</p>
                 </div>
             </section>
         </div>
