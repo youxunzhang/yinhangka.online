@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8794607118520437" crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-8794607118520437">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>复利计算器 - 定投收益与利息增长在线计算</title>
+    <meta name="description" content="复利计算器可帮助您测算本金、利率、复利频率与定投金额下的未来收益，展示累计本金、总利息与收益曲线，助力理财规划。">
+    <meta name="keywords" content="复利计算器,在线复利计算,理财收益,定投收益,利息计算,复利公式">
+    <link rel="canonical" href="https://yinhangka.online/compound-interest-calculator.html">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>国内银行</span>
+                </a>
+                <a href="global-banks.html" class="nav-link">
+                    <i class="fas fa-globe"></i>
+                    <span>全球银行</span>
+                </a>
+                <a href="global-brokers.html" class="nav-link">
+                    <i class="fas fa-briefcase"></i>
+                    <span>全球券商</span>
+                </a>
+
+                <a href="credit-cards.html" class="nav-link">
+                    <i class="fas fa-credit-card"></i>
+                    <span>信用卡</span>
+                </a>
+                <a href="exchange-rates.html" class="nav-link">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>实时汇率</span>
+                </a>
+                <a href="loan-interest-calculator.html" class="nav-link">
+                    <i class="fas fa-coins"></i>
+                    <span>贷款利率</span>
+                </a>
+                <a href="credit-card-installment-calculator.html" class="nav-link">
+                    <i class="fas fa-calculator"></i>
+                    <span>信用卡分期</span>
+                </a>
+                <a href="math-calculator.html" class="nav-link">
+                    <i class="fas fa-square-root-variable"></i>
+                    <span>多功能计算</span>
+                </a>
+                <a href="compound-interest-calculator.html" class="nav-link active">
+                    <i class="fas fa-chart-line"></i>
+                    <span>复利计算</span>
+                </a>
+                <a href="rmb-uppercase.html" class="nav-link">
+                    <i class="fas fa-yen-sign"></i>
+                    <span>人民币大写</span>
+                </a>
+                <a href="card-bin-lookup.html" class="nav-link">
+                    <i class="fas fa-magnifying-glass"></i>
+                    <span>BIN 查询</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="面包屑导航">
+                <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <a href="/" itemprop="item">
+                            <span itemprop="name">首页</span>
+                        </a>
+                        <meta itemprop="position" content="1" />
+                    </li>
+                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <span itemprop="name">复利计算器</span>
+                        <meta itemprop="position" content="2" />
+                    </li>
+                </ol>
+            </nav>
+
+            <section class="hero">
+                <h1 class="hero-title">复利收益一键测算</h1>
+                <p class="hero-description">
+                    输入本金、年化利率、复利频率与定投金额，立即查看未来本金增长、总利息与投资收益占比，帮助您科学规划理财目标。
+                </p>
+            </section>
+
+            <section class="calculator-section">
+                <div class="calculator-grid">
+                    <div class="calculator-card">
+                        <h3 class="calculator-title">
+                            <i class="fas fa-sliders-h" aria-hidden="true"></i>
+                            复利参数设置
+                        </h3>
+                        <form id="compound-form" class="calculator-form">
+                            <div class="form-group">
+                                <label for="principal">初始本金</label>
+                                <div class="input-wrapper with-prefix">
+                                    <span class="input-prefix">¥</span>
+                                    <input type="number" id="principal" name="principal" inputmode="decimal" min="0" step="100" value="10000" placeholder="例如 10000" aria-describedby="principal-helper" required>
+                                </div>
+                                <p class="form-helper" id="principal-helper">一次性投入的初始金额，可输入零表示从定投开始。</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="rate">年化利率</label>
+                                <div class="input-wrapper with-suffix">
+                                    <input type="number" id="rate" name="rate" inputmode="decimal" min="0" step="0.01" value="5" placeholder="例如 5" aria-describedby="rate-helper" required>
+                                    <span class="input-suffix">%</span>
+                                </div>
+                                <p class="form-helper" id="rate-helper">理财产品或投资组合的年化收益率，例如 5 表示 5%。</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="years">投资年限</label>
+                                <div class="input-wrapper">
+                                    <input type="number" id="years" name="years" inputmode="decimal" min="0" step="0.5" value="10" placeholder="例如 10" aria-describedby="years-helper" required>
+                                </div>
+                                <p class="form-helper" id="years-helper">支持输入半年的倍数，例如 7.5 年。</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="frequency">复利频率</label>
+                                <select id="frequency" name="frequency" aria-label="复利频率">
+                                    <option value="1">每年一次</option>
+                                    <option value="2">每半年一次</option>
+                                    <option value="4">每季度一次</option>
+                                    <option value="12" selected>每月一次</option>
+                                    <option value="365">每日一次</option>
+                                </select>
+                                <p class="form-helper">复利次数越多，利息滚存速度越快。</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contribution">每期定投金额</label>
+                                <div class="input-wrapper with-prefix">
+                                    <span class="input-prefix">¥</span>
+                                    <input type="number" id="contribution" name="contribution" inputmode="decimal" min="0" step="100" value="1000" placeholder="例如 1000" aria-describedby="contribution-helper" required>
+                                </div>
+                                <p class="form-helper" id="contribution-helper">每个复利周期追加的金额，如每月定投。</p>
+                            </div>
+
+                            <button type="submit" class="calculator-submit">
+                                <i class="fas fa-chart-line" aria-hidden="true"></i>
+                                计算未来价值
+                            </button>
+                        </form>
+
+                        <div class="calculator-results" id="compound-results" role="region" aria-live="polite" aria-atomic="true">
+                            <p class="placeholder-text">填写所有参数后，点击“计算未来价值”即可查看复利收益详情。</p>
+                        </div>
+                    </div>
+
+                    <aside class="calculator-side">
+                        <div class="info-card">
+                            <h3><i class="fas fa-lightbulb" aria-hidden="true"></i> 使用小贴士</h3>
+                            <ul>
+                                <li>年化利率可参考历史收益率或银行理财产品的预期收益。</li>
+                                <li>定投金额与复利频率保持一致，例如每月复利则输入每月定投金额。</li>
+                                <li>可通过调整年限与利率快速对比不同理财方案的收益差异。</li>
+                            </ul>
+                        </div>
+                        <div class="info-card info-card--accent">
+                            <h3><i class="fas fa-info-circle" aria-hidden="true"></i> 温馨提示</h3>
+                            <p>计算结果基于理想复利模型，实际收益会受到市场波动、手续费与税费等因素影响，请以实际投资情况为准。</p>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="calculator-tips">
+                <h3 class="section-title">
+                    <i class="fas fa-compass" aria-hidden="true"></i>
+                    复利规划建议
+                </h3>
+                <div class="tips-grid">
+                    <div class="info-card info-card--outline">
+                        <h3><i class="fas fa-seedling" aria-hidden="true"></i> 复利的力量</h3>
+                        <p>复利通过“利滚利”帮助资金持续增值，投入时间越长，收益曲线越陡峭。</p>
+                    </div>
+                    <div class="info-card info-card--outline">
+                        <h3><i class="fas fa-calendar-alt" aria-hidden="true"></i> 设定投资节奏</h3>
+                        <p>定期投入可平滑市场波动，坚持长期投资更容易实现目标收益。</p>
+                    </div>
+                    <div class="info-card info-card--outline">
+                        <h3><i class="fas fa-shield-alt" aria-hidden="true"></i> 控制风险</h3>
+                        <ul>
+                            <li>理财前了解产品风险等级，合理配置资产。</li>
+                            <li>保持紧急备用金，避免因现金流压力中断投资计划。</li>
+                            <li>定期复盘收益表现，适时调整策略。</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>关于我们</h4>
+                    <p>为您提供最全面的银行服务信息和实用工具，助您合理规划财务。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快捷入口</h4>
+                    <ul>
+                        <li><a href="/index.html">国内银行</a></li>
+                        <li><a href="/credit-cards.html">信用卡</a></li>
+                        <li><a href="/exchange-rates.html">实时汇率</a></li>
+                        <li><a href="/loan-interest-calculator.html">贷款利率</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>联系我们</h4>
+                    <p>如需合作或数据支持，欢迎通过站内留言与我们联系。</p>
+                </div>
+            </div>
+            <p class="footer-copy">&copy; 2024 yinhangka.online 版权所有</p>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            const form = document.getElementById('compound-form');
+            const results = document.getElementById('compound-results');
+
+            const formatCurrency = (value) => {
+                return new Intl.NumberFormat('zh-CN', {
+                    style: 'currency',
+                    currency: 'CNY',
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                }).format(value);
+            };
+
+            const formatNumber = (value) => {
+                return new Intl.NumberFormat('zh-CN', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                }).format(value);
+            };
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                const principal = Number(document.getElementById('principal').value) || 0;
+                const rate = Number(document.getElementById('rate').value) || 0;
+                const years = Number(document.getElementById('years').value) || 0;
+                const frequency = Number(document.getElementById('frequency').value) || 1;
+                const contribution = Number(document.getElementById('contribution').value) || 0;
+
+                if (years <= 0 || frequency <= 0) {
+                    results.innerHTML = '<p class="error-text">请输入大于 0 的投资年限和复利频率。</p>';
+                    return;
+                }
+
+                const totalPeriods = Math.round(years * frequency);
+                const periodRate = rate / 100 / frequency;
+
+                let balance = principal;
+                let totalContribution = principal;
+                const schedule = [];
+
+                for (let period = 1; period <= totalPeriods; period += 1) {
+                    const interest = balance * periodRate;
+                    balance += interest;
+                    if (contribution > 0) {
+                        balance += contribution;
+                        totalContribution += contribution;
+                    }
+
+                    schedule.push({
+                        period,
+                        interest,
+                        contribution,
+                        balance
+                    });
+                }
+
+                const totalInterest = balance - totalContribution;
+
+                const summaryHTML = `
+                    <div class="result-summary">
+                        <h4><i class="fas fa-chart-pie" aria-hidden="true"></i> 复利收益概览</h4>
+                        <ul class="result-list">
+                            <li><span>期末本息合计</span><strong>${formatCurrency(balance)}</strong></li>
+                            <li><span>累计投入本金</span><strong>${formatCurrency(totalContribution)}</strong></li>
+                            <li><span>累计利息收益</span><strong>${formatCurrency(totalInterest)}</strong></li>
+                            <li><span>总复利期数</span><strong>${totalPeriods} 期</strong></li>
+                        </ul>
+                    </div>
+                `;
+
+                const previewRows = schedule.slice(0, 12).map((item) => {
+                    return `
+                        <tr>
+                            <td>${item.period}</td>
+                            <td>${formatNumber(item.interest)}</td>
+                            <td>${formatNumber(item.contribution)}</td>
+                            <td>${formatNumber(item.balance)}</td>
+                        </tr>
+                    `;
+                }).join('');
+
+                const tableHTML = `
+                    <div class="result-table-wrapper">
+                        <h4><i class="fas fa-table" aria-hidden="true"></i> 前 12 期复利明细</h4>
+                        <table class="result-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">期数</th>
+                                    <th scope="col">当期利息</th>
+                                    <th scope="col">定投金额</th>
+                                    <th scope="col">期末余额</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${previewRows || '<tr><td colspan="4">复利期数不足 1 期，请延长投资年限。</td></tr>'}
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+
+                results.innerHTML = summaryHTML + tableHTML;
+            });
+        })();
+    </script>
+</body>
+</html>
