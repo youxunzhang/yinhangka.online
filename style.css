@@ -578,6 +578,15 @@ body {
     margin-right: 0.5rem;
 }
 
+.section-description {
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1rem;
+    line-height: 1.8;
+    text-align: center;
+}
+
 /* 银行卡片网格 */
 .banks-grid {
     display: grid;
