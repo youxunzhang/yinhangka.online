@@ -2406,12 +2406,43 @@ body {
     font-size: 0.95rem;
 }
 
-.reference-table tbody tr:nth-child(even) {
+.reference-table tbody tr:nth-child(even):not(.table-group) {
     background: rgba(102, 126, 234, 0.08);
 }
 
-.reference-table tbody tr:hover {
+.reference-table tbody tr:hover:not(.table-group) {
     background: rgba(102, 126, 234, 0.12);
+}
+
+.grouped-table tbody tr.table-group {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.18), rgba(118, 75, 162, 0.18));
+}
+
+.grouped-table tbody tr.table-group th {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    align-items: flex-start;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #2c5282;
+    letter-spacing: 0.02em;
+}
+
+.grouped-table tbody tr.table-group th .group-heading {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.grouped-table tbody tr.table-group th .group-note {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #4a5568;
+}
+
+.grouped-table tbody tr.table-group th .group-heading i {
+    color: #5a67d8;
 }
 
 .example-list {
