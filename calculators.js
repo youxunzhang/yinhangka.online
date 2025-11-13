@@ -232,6 +232,153 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // 60 年期房贷计算器
+    const mortgage60Form = document.getElementById('mortgage-60-form');
+    const mortgage60Results = document.getElementById('mortgage-60-results');
+
+    if (mortgage60Form && mortgage60Results) {
+        const priceInput = document.getElementById('mortgage-property-price');
+        const downPaymentInput = document.getElementById('mortgage-down-payment');
+        const annualRateInput = document.getElementById('mortgage-annual-rate');
+
+        let hasCalculated = false;
+
+        const calculateMortgage60 = () => {
+            const propertyPrice = parseFloat(priceInput.value);
+            const downPaymentRate = parseFloat(downPaymentInput.value);
+            const annualRate = parseFloat(annualRateInput.value);
+
+            if (!Number.isFinite(propertyPrice) || propertyPrice <= 0) {
+                renderError(mortgage60Results, '请输入有效的房屋总价。');
+                return;
+            }
+
+            if (!Number.isFinite(downPaymentRate) || downPaymentRate < 0 || downPaymentRate >= 100) {
+                renderError(mortgage60Results, '首付比例需在 0% 至 99% 之间。');
+                return;
+            }
+
+            if (!Number.isFinite(annualRate) || annualRate < 0) {
+                renderError(mortgage60Results, '请输入正确的贷款年化利率。');
+                return;
+            }
+
+            const downPaymentAmount = propertyPrice * (downPaymentRate / 100);
+            const principal = propertyPrice - downPaymentAmount;
+
+            if (!Number.isFinite(principal) || principal <= 0) {
+                renderError(mortgage60Results, '首付比例过高或房屋总价过低，无法形成有效贷款本金。');
+                return;
+            }
+
+            const totalMonths = 60 * 12;
+            const monthlyRate = annualRate / 12 / 100;
+            const isZeroRate = Math.abs(monthlyRate) < 1e-8;
+
+            let monthlyPayment;
+
+            if (isZeroRate) {
+                monthlyPayment = principal / totalMonths;
+            } else {
+                const compoundFactor = Math.pow(1 + monthlyRate, totalMonths);
+                monthlyPayment = principal * monthlyRate * compoundFactor / (compoundFactor - 1);
+            }
+
+            const totalPayment = monthlyPayment * totalMonths;
+            const totalInterest = totalPayment - principal;
+            const totalCost = totalPayment + downPaymentAmount;
+            const interestRatio = totalPayment > 0 ? (totalInterest / totalPayment) * 100 : 0;
+
+            const monthsToDisplay = Math.min(totalMonths, 12);
+            const amortizationRows = [];
+            let remainingPrincipal = principal;
+
+            for (let month = 1; month <= monthsToDisplay; month += 1) {
+                const interestPayment = isZeroRate ? 0 : remainingPrincipal * monthlyRate;
+                let principalPayment = monthlyPayment - interestPayment;
+
+                if (principalPayment > remainingPrincipal) {
+                    principalPayment = remainingPrincipal;
+                }
+
+                remainingPrincipal = clampToZero(remainingPrincipal - principalPayment);
+
+                amortizationRows.push({
+                    month,
+                    payment: monthlyPayment,
+                    interest: interestPayment,
+                    principal: principalPayment,
+                    remaining: remainingPrincipal,
+                });
+            }
+
+            const rowsHtml = amortizationRows.map((row) => `
+                <tr>
+                    <td>${row.month}</td>
+                    <td>${formatCurrency(row.payment)}</td>
+                    <td>${formatCurrency(row.interest)}</td>
+                    <td>${formatCurrency(row.principal)}</td>
+                    <td>${formatCurrency(row.remaining)}</td>
+                </tr>
+            `).join('');
+
+            mortgage60Results.innerHTML = `
+                <div class="result-summary">
+                    <div class="result-item">
+                        <span class="result-label">贷款本金</span>
+                        <span class="result-value">${formatCurrency(principal)}</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">预计每月还款</span>
+                        <span class="result-value">${formatCurrency(monthlyPayment)}</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">累计利息支出</span>
+                        <span class="result-value">${formatCurrency(totalInterest)}</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">累计还款总额</span>
+                        <span class="result-value">${formatCurrency(totalPayment)}</span>
+                    </div>
+                </div>
+                <div class="result-breakdown">
+                    <p class="result-note">方案基于 60 年（720 期）等额本息还款，利息约占总还款的 ${formatPercent(interestRatio)}。首付金额约为 ${formatCurrency(downPaymentAmount)}，整体购房总成本约 ${formatCurrency(totalCost)}。</p>
+                    <h4>前 ${monthsToDisplay} 期还款计划预览</h4>
+                    <div class="result-table-wrapper">
+                        <table class="result-table">
+                            <thead>
+                                <tr>
+                                    <th>期数</th>
+                                    <th>每期应还</th>
+                                    <th>其中利息</th>
+                                    <th>其中本金</th>
+                                    <th>剩余本金</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${rowsHtml}
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="result-note">剩余 ${formatInteger(totalMonths - monthsToDisplay)} 期仍将按照相同月供偿还，本金占比会随着期数增加逐步提升。</p>
+                    <p class="result-note">提示：实际批贷利率、首付比例以及银行四舍五入规则可能导致结果存在差异，请以银行出具的还款计划为准。</p>
+                </div>
+            `;
+        };
+
+        mortgage60Form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            hasCalculated = true;
+            calculateMortgage60();
+        });
+
+        mortgage60Form.addEventListener('input', () => {
+            if (hasCalculated) {
+                calculateMortgage60();
+            }
+        });
+    }
+
     // 信用卡分期计算器
     const installmentForm = document.getElementById('installment-calculator-form');
     const installmentResults = document.getElementById('installment-results');
