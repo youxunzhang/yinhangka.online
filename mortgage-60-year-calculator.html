@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8794607118520437" crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-8794607118520437">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>60年期抵押贷款计算器 - 超长房贷月供测算</title>
+    <meta name="description" content="60年期抵押贷款计算器针对超长房贷方案，支持输入房屋总价、首付比例和贷款年利率，秒算每月月供、总利息与前12期还款计划，辅助评估长期置业压力。">
+    <meta name="keywords" content="60年期抵押贷款计算器,超长房贷月供,房贷月供计算器,等额本息,长周期贷款,房屋贷款测算">
+    <link rel="canonical" href="https://yinhangka.online/mortgage-60-year-calculator.html">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>国内银行</span>
+                </a>
+                <a href="global-banks.html" class="nav-link">
+                    <i class="fas fa-globe"></i>
+                    <span>全球银行</span>
+                </a>
+                <a href="global-payment-platforms.html" class="nav-link">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>全球支付</span>
+                </a>
+                <a href="global-brokers.html" class="nav-link">
+                    <i class="fas fa-briefcase"></i>
+                    <span>全球券商</span>
+                </a>
+
+                <a href="global-insurance.html" class="nav-link">
+                    <i class="fas fa-shield-heart"></i>
+                    <span>全球保险</span>
+                </a>
+
+                <a href="credit-cards.html" class="nav-link">
+                    <i class="fas fa-credit-card"></i>
+                    <span>信用卡</span>
+                </a>
+                <a href="exchange-rates.html" class="nav-link">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>实时汇率</span>
+                </a>
+                <a href="loan-interest-calculator.html" class="nav-link">
+                    <i class="fas fa-coins"></i>
+                    <span>贷款利率</span>
+                </a>
+                <a href="mortgage-60-year-calculator.html" class="nav-link active">
+                    <i class="fas fa-house"></i>
+                    <span>60年期房贷</span>
+                </a>
+                <a href="credit-card-installment-calculator.html" class="nav-link">
+                    <i class="fas fa-calculator"></i>
+                    <span>信用卡分期</span>
+                </a>
+                <a href="calculators.html" class="nav-link">
+                    <i class="fas fa-tools"></i>
+                    <span>计算工具</span>
+                </a>
+                <a href="math-calculator.html" class="nav-link">
+                    <i class="fas fa-square-root-variable"></i>
+                    <span>多功能计算</span>
+                </a>
+                <a href="compound-interest-calculator.html" class="nav-link">
+                    <i class="fas fa-chart-line"></i>
+                    <span>复利计算</span>
+                </a>
+                <a href="rmb-uppercase.html" class="nav-link">
+                    <i class="fas fa-yen-sign"></i>
+                    <span>人民币大写</span>
+                </a>
+                <a href="card-bin-lookup.html" class="nav-link">
+                    <i class="fas fa-magnifying-glass"></i>
+                    <span>BIN 查询</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="面包屑导航">
+                <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <a href="/" itemprop="item">
+                            <span itemprop="name">首页</span>
+                        </a>
+                        <meta itemprop="position" content="1" />
+                    </li>
+                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <span itemprop="name">60年期抵押贷款计算器</span>
+                        <meta itemprop="position" content="2" />
+                    </li>
+                </ol>
+            </nav>
+
+            <section class="hero">
+                <h1 class="hero-title">60年超长房贷月供即时测算</h1>
+                <p class="hero-description">
+                    输入房屋总价、首付比例与贷款年化利率，即可推算 60 年（720 期）等额本息还款方案的月供、总利息与首付金额，
+                    帮助您评估超长房贷的现金流压力和资金占用情况。
+                </p>
+            </section>
+
+            <section class="calculator-section">
+                <div class="calculator-grid">
+                    <div class="calculator-card">
+                        <h3 class="calculator-title">
+                            <i class="fas fa-sliders-h" aria-hidden="true"></i>
+                            贷款参数设置
+                        </h3>
+                        <form id="mortgage-60-form" class="calculator-form">
+                            <div class="form-group">
+                                <label for="mortgage-property-price">房屋总价</label>
+                                <div class="input-wrapper with-prefix">
+                                    <span class="input-prefix">¥</span>
+                                    <input type="number" id="mortgage-property-price" name="mortgage-property-price" inputmode="decimal" min="0" step="10000" value="2000000" placeholder="例如 2000000" aria-describedby="mortgage-property-price-helper" required>
+                                </div>
+                                <p class="form-helper" id="mortgage-property-price-helper">请输入房屋购买总价，单位为人民币，支持整数或带小数的金额。</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="mortgage-down-payment">首付比例</label>
+                                <div class="input-wrapper with-suffix">
+                                    <input type="number" id="mortgage-down-payment" name="mortgage-down-payment" inputmode="decimal" min="0" max="99.9" step="0.5" value="30" placeholder="例如 30" aria-describedby="mortgage-down-payment-helper" required>
+                                    <span class="input-suffix">%</span>
+                                </div>
+                                <p class="form-helper" id="mortgage-down-payment-helper">常见首付比例为 20%-40%，若为零首付可填写 0。</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="mortgage-annual-rate">贷款年利率</label>
+                                <div class="input-wrapper with-suffix">
+                                    <input type="number" id="mortgage-annual-rate" name="mortgage-annual-rate" inputmode="decimal" min="0" step="0.01" value="4.30" placeholder="例如 4.30" aria-describedby="mortgage-annual-rate-helper" required>
+                                    <span class="input-suffix">%</span>
+                                </div>
+                                <p class="form-helper" id="mortgage-annual-rate-helper">填写贷款合同的年化利率，例如 4.30 表示年利率 4.30%。</p>
+                            </div>
+
+                            <button type="submit" class="calculator-submit">
+                                <i class="fas fa-equals" aria-hidden="true"></i>
+                                计算月供
+                            </button>
+                        </form>
+
+                        <div class="calculator-results" id="mortgage-60-results" role="region" aria-live="polite" aria-atomic="true">
+                            <p class="placeholder-text">补充完整房屋总价、首付比例和利率后，即可查看 60 年期房贷的详细月供与还款明细。</p>
+                        </div>
+                    </div>
+
+                    <aside class="calculator-side">
+                        <div class="info-card">
+                            <h3><i class="fas fa-lightbulb" aria-hidden="true"></i> 使用提示</h3>
+                            <ul>
+                                <li>计算默认采用等额本息还款，适用于各类商业房贷或政策性超长贷款。</li>
+                                <li>首付比例支持 0-99% 的范围，系统会自动换算贷款本金。</li>
+                                <li>若银行采用等额本金或随借随还模式，请以银行提供的方案为准。</li>
+                            </ul>
+                        </div>
+                        <div class="info-card info-card--accent">
+                            <h3><i class="fas fa-info-circle" aria-hidden="true"></i> 温馨提示</h3>
+                            <p>60 年超长周期意味着总利息支出远高于常规 30 年房贷。计算结果仅供参考，实际批贷利率和期限需以银行审批为准。</p>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="calculator-tips">
+                <h3 class="section-title">
+                    <i class="fas fa-compass" aria-hidden="true"></i>
+                    超长房贷常见问题
+                </h3>
+                <div class="tips-grid">
+                    <div class="info-card info-card--outline">
+                        <h3><i class="fas fa-hourglass-half" aria-hidden="true"></i> 60 年期等额本息有何特点？</h3>
+                        <p>极长的还款周期使得单期月供显著降低，但利息累计时间更长，总支出也随之增加。适合追求现金流宽裕、可接受更高总成本的置业者。</p>
+                    </div>
+                    <div class="info-card info-card--outline">
+                        <h3><i class="fas fa-chart-pie" aria-hidden="true"></i> 结果中包含哪些数据？</h3>
+                        <p>系统会输出首付金额、贷款本金、每月月供、总利息以及前 12 期的利息占比变化，帮助您快速了解还款结构。</p>
+                    </div>
+                    <div class="info-card info-card--outline">
+                        <h3><i class="fas fa-hand-holding-dollar" aria-hidden="true"></i> 如何降低长期利息压力？</h3>
+                        <ul>
+                            <li>尽量提高首付比例，减少贷款本金。</li>
+                            <li>关注利率优惠政策，适时申请利率调整或转按揭。</li>
+                            <li>手头资金充裕时，可考虑提前部分还款以缩短周期。</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>关于我们</h4>
+                    <p>为您提供最全面的银行服务信息和实用工具，助您合理规划财务。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快捷入口</h4>
+                    <ul>
+                        <li><a href="/index.html">国内银行</a></li>
+                        <li><a href="/credit-cards.html">信用卡</a></li>
+                        <li><a href="/exchange-rates.html">实时汇率</a></li>
+                        <li><a href="/calculators.html">金融计算器合集</a></li>
+                        <li><a href="/loan-interest-calculator.html">贷款利率计算器</a></li>
+                        <li><a href="/mortgage-60-year-calculator.html">60 年期房贷计算器</a></li>
+                        <li><a href="/credit-card-installment-calculator.html">信用卡分期计算器</a></li>
+                        <li><a href="/math-calculator.html">多功能计算器</a></li>
+                        <li><a href="/rmb-uppercase.html">人民币大小写对照</a></li>
+                        <li><a href="/card-bin-lookup.html">BIN 号查询工具</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>联系我们</h4>
+                    <p>如有任何问题或建议，欢迎随时通过网站提供的联系方式与我们取得联系。</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 银行卡推荐网站. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="calculators.js"></script>
+</body>
+</html>
