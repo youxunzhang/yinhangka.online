@@ -11,14 +11,105 @@ if ('serviceWorker' in navigator) {
     });
 }
 
+// 构建主要菜单栏
+function buildPrimaryNavigation() {
+    const navMenu = document.querySelector('.nav-menu');
+    if (!navMenu) return;
+
+    const primaryLinks = [
+        { href: '/index.html', icon: 'fas fa-home', label: '国内银行' },
+        { href: '/global-banks.html', icon: 'fas fa-globe', label: '全球银行' },
+        { href: '/international-remittance.html', icon: 'fas fa-paper-plane', label: '国际汇款' },
+        { href: '/global-payment-platforms.html', icon: 'fas fa-money-bill-wave', label: '全球支付' },
+        { href: '/global-brokers.html', icon: 'fas fa-briefcase', label: '全球券商' },
+        { href: '/global-insurance.html', icon: 'fas fa-shield-heart', label: '全球保险' },
+        { href: '/credit-cards.html', icon: 'fas fa-credit-card', label: '信用卡' },
+        { href: '/exchange-rates.html', icon: 'fas fa-exchange-alt', label: '实时汇率' }
+    ];
+
+    const utilityLinks = [
+        { href: '/loan-interest-calculator.html', icon: 'fas fa-coins', label: '贷款利率' },
+        { href: '/mortgage-60-year-calculator.html', icon: 'fas fa-house', label: '60年期房贷' },
+        { href: '/credit-card-installment-calculator.html', icon: 'fas fa-calculator', label: '信用卡分期' },
+        { href: '/calculators.html', icon: 'fas fa-tools', label: '计算工具' },
+        { href: '/math-calculator.html', icon: 'fas fa-square-root-variable', label: '多功能计算' },
+        { href: '/compound-interest-calculator.html', icon: 'fas fa-chart-line', label: '复利计算' },
+        { href: '/rmb-uppercase.html', icon: 'fas fa-yen-sign', label: '人民币大写' },
+        { href: '/card-bin-lookup.html', icon: 'fas fa-magnifying-glass', label: 'BIN 查询' }
+    ];
+
+    const createLinkHTML = ({ href, icon, label }) => `
+        <a href="${href}" class="nav-link">
+            <i class="${icon}"></i>
+            <span>${label}</span>
+        </a>
+    `;
+
+    navMenu.innerHTML = `
+        <div class="nav-brand" aria-label="主要菜单">
+            <div class="brand-icon"><i class="fas fa-building-columns"></i></div>
+            <div class="brand-text">
+                <strong>主要菜单</strong>
+                <small>银行与金融工具</small>
+            </div>
+        </div>
+        <div class="nav-primary">${primaryLinks.map(createLinkHTML).join('')}</div>
+        <div class="nav-more">
+            <button class="more-toggle" type="button" aria-expanded="false">
+                <i class="fas fa-ellipsis-h"></i>
+                <span>更多工具</span>
+            </button>
+            <div class="more-panel">${utilityLinks.map(createLinkHTML).join('')}</div>
+        </div>
+    `;
+
+    const currentPath = (window.location.pathname.split('/').filter(Boolean).pop() || 'index.html').toLowerCase();
+    const allLinks = navMenu.querySelectorAll('a.nav-link');
+    let hasActive = false;
+
+    allLinks.forEach(link => {
+        const hrefPath = link.getAttribute('href').split('/').filter(Boolean).pop()?.toLowerCase();
+        if (hrefPath === currentPath) {
+            link.classList.add('active');
+            hasActive = true;
+        }
+    });
+
+    if (!hasActive && allLinks.length) {
+        allLinks[0].classList.add('active');
+    }
+
+    const moreToggle = navMenu.querySelector('.more-toggle');
+    const morePanel = navMenu.querySelector('.more-panel');
+
+    if (moreToggle && morePanel) {
+        moreToggle.addEventListener('click', (event) => {
+            event.stopPropagation();
+            const isOpen = morePanel.classList.toggle('open');
+            moreToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!morePanel.classList.contains('open')) return;
+            if (!morePanel.contains(event.target) && !moreToggle.contains(event.target)) {
+                morePanel.classList.remove('open');
+                moreToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+}
+
 // 页面加载完成后执行
 document.addEventListener('DOMContentLoaded', function() {
+    // 构建主要菜单栏
+    buildPrimaryNavigation();
+
     // 初始化Favicon处理
     initializeFavicons();
-    
+
     // 添加页面加载动画
     const bankCards = document.querySelectorAll('.bank-card');
-    
+
     // 为每个银行卡片添加延迟动画
     bankCards.forEach((card, index) => {
         card.style.animationDelay = `${index * 0.1}s`;
