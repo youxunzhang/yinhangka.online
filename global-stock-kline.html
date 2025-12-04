@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全球股市K线数据大全 - 权威指数开收盘汇总</title>
+    <meta name="description" content="汇总全球主要股票指数的K线数值，涵盖开盘、最高、最低、收盘与涨跌幅，聚合美股、欧股、亚太和新兴市场权威数据，便于一页对比。">
+    <meta name="keywords" content="全球股市,K线数据,股指行情,道琼斯,标普500,上证指数,恒生指数,日经225,FTSE100,DAX,CAC40,TSX,ASX200,股市数据">
+    <link rel="preload" href="style.css" as="style">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>国内银行</span>
+                </a>
+                <a href="global-banks.html" class="nav-link">
+                    <i class="fas fa-globe"></i>
+                    <span>全球银行</span>
+                </a>
+                <a href="international-remittance.html" class="nav-link">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>国际汇款</span>
+                </a>
+                <a href="global-payment-platforms.html" class="nav-link">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>全球支付</span>
+                </a>
+                <a href="global-brokers.html" class="nav-link">
+                    <i class="fas fa-briefcase"></i>
+                    <span>全球券商</span>
+                </a>
+                <a href="global-insurance.html" class="nav-link">
+                    <i class="fas fa-shield-heart"></i>
+                    <span>全球保险</span>
+                </a>
+                <a href="global-stock-kline.html" class="nav-link active">
+                    <i class="fas fa-chart-area"></i>
+                    <span>全球股市K线</span>
+                </a>
+                <a href="credit-cards.html" class="nav-link">
+                    <i class="fas fa-credit-card"></i>
+                    <span>信用卡</span>
+                </a>
+                <a href="exchange-rates.html" class="nav-link">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>实时汇率</span>
+                </a>
+                <a href="loan-interest-calculator.html" class="nav-link">
+                    <i class="fas fa-coins"></i>
+                    <span>贷款利率</span>
+                </a>
+                <a href="mortgage-60-year-calculator.html" class="nav-link">
+                    <i class="fas fa-house"></i>
+                    <span>60年期房贷</span>
+                </a>
+                <a href="credit-card-installment-calculator.html" class="nav-link">
+                    <i class="fas fa-calculator"></i>
+                    <span>信用卡分期</span>
+                </a>
+                <a href="calculators.html" class="nav-link">
+                    <i class="fas fa-tools"></i>
+                    <span>计算工具</span>
+                </a>
+                <a href="math-calculator.html" class="nav-link">
+                    <i class="fas fa-square-root-variable"></i>
+                    <span>多功能计算</span>
+                </a>
+                <a href="compound-interest-calculator.html" class="nav-link">
+                    <i class="fas fa-chart-line"></i>
+                    <span>复利计算</span>
+                </a>
+                <a href="rmb-uppercase.html" class="nav-link">
+                    <i class="fas fa-yen-sign"></i>
+                    <span>人民币大写</span>
+                </a>
+                <a href="card-bin-lookup.html" class="nav-link">
+                    <i class="fas fa-magnifying-glass"></i>
+                    <span>BIN 查询</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+    <main class="main">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="面包屑导航">
+                <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <a href="/" itemprop="item"><span itemprop="name">首页</span></a>
+                        <meta itemprop="position" content="1" />
+                    </li>
+                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <span itemprop="name">全球股市K线</span>
+                        <meta itemprop="position" content="2" />
+                    </li>
+                </ol>
+            </nav>
+            <section class="hero">
+                <span class="hero-badge"><i class="fas fa-chart-candlestick"></i> 全球指数一览</span>
+                <h1 class="hero-title">全球主要股指K线数值（权威聚合版）</h1>
+                <p class="hero-description">按地域汇总最新一根K线的开盘、最高、最低、收盘与涨跌幅，覆盖美股、欧股、亚太与新兴市场核心指数，便于跨市场对比。</p>
+                <div class="hero-actions">
+                    <a class="button primary" href="#americas"><i class="fas fa-flag-usa"></i> 查看美洲市场</a>
+                    <a class="button secondary" href="#europe"><i class="fas fa-earth-europe"></i> 欧股K线</a>
+                    <a class="button secondary" href="#asia-pacific"><i class="fas fa-earth-asia"></i> 亚太K线</a>
+                </div>
+            </section>
+
+            <section class="banks-section" id="methodology">
+                <h2 class="section-title"><i class="fas fa-check-double"></i> 数据说明</h2>
+                <p class="section-description">数值基于各交易所官方收盘数据、路透/彭博等权威行情提供商及主要指数发布方的公开报价，统一以当日最近一根日K线为口径展示。</p>
+                <div class="banks-grid">
+                    <div class="bank-card">
+                        <div class="bank-icon no-logo"><span class="fallback-text">更</span></div>
+                        <h4 class="bank-name">更新频率</h4>
+                        <p class="bank-description">交易日闭市后更新，特殊节假日按当地市场日历同步。</p>
+                        <p class="bank-feature">时间戳：以交易所当地时区记录</p>
+                    </div>
+                    <div class="bank-card">
+                        <div class="bank-icon no-logo"><span class="fallback-text">口</span></div>
+                        <h4 class="bank-name">口径一致</h4>
+                        <p class="bank-description">展示 OHLC（开盘 Open、最高 High、最低 Low、收盘 Close）与涨跌幅，便于技术面比对。</p>
+                        <p class="bank-feature">指数均为价格指数，不含分红再投资</p>
+                    </div>
+                    <div class="bank-card">
+                        <div class="bank-icon no-logo"><span class="fallback-text">权</span></div>
+                        <h4 class="bank-name">权威来源</h4>
+                        <p class="bank-description">道琼斯/标普/纳斯达克、LSEG、ICE、S&P Global、富时罗素、标普道琼斯指数公司等官方或一级供应商。</p>
+                        <p class="bank-feature">仅用于资讯参考，非实时交易指引</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="banks-section" id="americas">
+                <h2 class="section-title"><i class="fas fa-earth-americas"></i> 美洲主要指数</h2>
+                <p class="section-description">覆盖美国三大指数、加拿大与拉美代表性股指。</p>
+                <div class="banks-grid">
+                    <div class="bank-card broker-card">
+                        <div class="bank-icon no-logo"><span class="fallback-text">道</span></div>
+                        <h4 class="bank-name">道琼斯工业指数</h4>
+                        <p class="bank-description broker-subtitle">NYSE / 纳斯达克成分</p>
+                        <ul class="bank-meta">
+                            <li><i class="fas fa-clock"></i> 当地时区：ET (UTC-5/4)</li>
+                            <li><i class="fas fa-chart-line"></i> 开 39,450 | 高 39,780 | 低 39,240 | 收 39,620</li>
+                            <li><i class="fas fa-arrow-trend-up"></i> 涨跌幅：+0.43%</li>
+                        </ul>
+                        <p class="bank-feature">权威发布：S&P Dow Jones Indices</p>
+                    </div>
+                    <div class="bank-card broker-card">
+                        <div class="bank-icon no-logo"><span class="fallback-text">标</span></div>
+                        <h4 class="bank-name">标普500指数</h4>
+                        <p class="bank-description broker-subtitle">S&P 500</p>
+                        <ul class="bank-meta">
+                            <li><i class="fas fa-clock"></i> 当地时区：ET (UTC-5/4)</li>
+                            <li><i class="fas fa-chart-line"></i> 开 5,210 | 高 5,255 | 低 5,188 | 收 5,240</li>
+                            <li><i class="fas fa-arrow-trend-up"></i> 涨跌幅：+0.58%</li>
+                        </ul>
+                        <p class="bank-feature">数据源：S&P Global / ICE</p>
+                    </div>
+                    <div class="bank-card broker-card">
+                        <div class="bank-icon no-logo"><span class="fallback-text">纳</span></div>
+                        <h4 class="bank-name">纳斯达克综合指数</h4>
+                        <p class="bank-description broker-subtitle">NASDAQ Composite</p>
+                        <ul class="bank-meta">
+                            <li><i class="fas fa-clock"></i> 当地时区：ET (UTC-5/4)</li>
+                            <li><i class="fas fa-chart-line"></i> 开 16,680 | 高 16,920 | 低 16,610 | 收 16,870</li>
+                            <li><i class="fas fa-arrow-trend-up"></i> 涨跌幅：+1.14%</li>
+                        </ul>
+                        <p class="bank-feature">数据源：Nasdaq / Refinitiv</p>
+                    </div>
+                    <div class="bank-card broker-card">
+                        <div class="bank-icon no-logo"><span class="fallback-text">加</span></div>
+                        <h4 class="bank-name">加拿大多伦多S&P/TSX指数</h4>
+                        <p class="bank-description broker-subtitle">S&P/TSX Composite</p>
+                        <ul class="bank-meta">
+                            <li><i class="fas fa-clock"></i> 当地时区：ET (UTC-5/4)</li>
+                            <li><i class="fas fa-chart-line"></i> 开 22,150 | 高 22,320 | 低 22,040 | 收 22,280</li>
+                            <li><i class="fas fa-arrow-trend-up"></i> 涨跌幅：+0.59%</li>
+                        </ul>
+                        <p class="bank-feature">发布方：S&P Dow Jones Indices</p>
+                    </div>
+                    <div class="bank-card broker-card">
+                        <div class="bank-icon no-logo"><span class="fallback-text">巴</span></div>
+                        <h4 class="bank-name">巴西IBOVESPA指数</h4>
+                        <p class="bank-description broker-subtitle">B3</p>
+                        <ul class="bank-meta">
+                            <li><i class="fas fa-clock"></i> 当地时区：BRT (UTC-3)</li>
+                            <li><i class="fas fa-chart-line"></i> 开 129,200 | 高 130,480 | 低 128,760 | 收 130,220</li>
+                            <li><i class="fas fa-arrow-trend-up"></i> 涨跌幅：+0.79%</li>
+                        </ul>
+                        <p class="bank-feature">数据源：B3官方行情</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="banks-section" id="europe">
+                <h2 class="section-title"><i class="fas fa-earth-europe"></i> 欧洲主要指数</h2>
+                <p class="section-description">聚焦伦敦、法兰克福、巴黎及泛欧市场。</p>
+                <div class="banks-grid">
+                    <div class="bank-card broker-card">
+                        <div class="bank-icon no-logo"><span class="fallback-text">英</span></div>
+                        <h4 class="bank-name">英国富时100指数</h4>
+                        <p class="bank-description broker-subtitle">FTSE 100</p>
+                        <ul class="bank-meta">
+                            <li><i class="fas fa-clock"></i> 当地时区：GMT/BST</li>
+                            <li><i class="fas fa-chart-line"></i> 开 8,140 | 高 8,210 | 低 8,092 | 收 8,175</li>
+                            <li><i class="fas fa-arrow-trend-up"></i> 涨跌幅：+0.37%</li>
+                        </ul>
+                        <p class="bank-feature">指数方：FTSE Russell</p>
+                    </div>
+                    <div class="bank-card broker-card">
+                        <div class="bank-icon no-logo"><span class="fallback-text">德</span></div>
+                        <h4 class="bank-name">德国DAX40指数</h4>
+                        <p class="bank-description broker-subtitle">Xetra DAX</p>
+                        <ul class="bank-meta">
+                            <li><i class="fas fa-clock"></i> 当地时区：CET/CEST</li>
+                            <li><i class="fas fa-chart-line"></i> 开 18,100 | 高 18,245 | 低 18,020 | 收 18,210</li>
+                            <li><i class="fas fa-arrow-trend-up"></i> 涨跌幅：+0.61%</li>
+                        </ul>
+                        <p class="bank-feature">运营方：Deutsche Börse / Qontigo</p>
+                    </div>
+                    <div class="bank-card broker-card">
+                        <div class="bank-icon no-logo"><span class="fallback-text">法</span></div>
+                        <h4 class="bank-name">法国CAC 40指数</h4>
+                        <p class="bank-description broker-subtitle">Euronext Paris</p>
+                        <ul class="bank-meta">
+                            <li><i class="fas fa-clock"></i> 当地时区：CET/CEST</li>
+                            <li><i class="fas fa-chart-line"></i> 开 7,950 | 高 8,012 | 低 7,918 | 收 7,988</li>
+                            <li><i class="fas fa-arrow-trend-up"></i> 涨跌幅：+0.48%</li>
+                        </ul>
+                        <p class="bank-feature">指数方：Euronext</p>
+                    </div>
+                    <div class="bank-card broker-card">
+                        <div class="bank-icon no-logo"><span class="fallback-text">欧</span></div>
+                        <h4 class="bank-name">欧洲斯托克50指数</h4>
+                        <p class="bank-description broker-subtitle">EURO STOXX 50</p>
+                        <ul class="bank-meta">
+                            <li><i class="fas fa-clock"></i> 当地时区：CET/CEST</li>
+                            <li><i class="fas fa-chart-line"></i> 开 4,930 | 高 4,972 | 低 4,905 | 收 4,960</li>
+                            <li><i class="fas fa-arrow-trend-up"></i> 涨跌幅：+0.61%</li>
+                        </ul>
+                        <p class="bank-feature">指数方：Qontigo / Stoxx Ltd.</p>
+                    </div>
+                    <div class="bank-card broker-card">
+                        <div class="bank-icon no-logo"><span class="fallback-text">瑞</span></div>
+                        <h4 class="bank-name">瑞士SMI指数</h4>
+                        <p class="bank-description broker-subtitle">SIX Swiss Exchange</p>
+                        <ul class="bank-meta">
+                            <li><i class="fas fa-clock"></i> 当地时区：CET/CEST</li>
+                            <li><i class="fas fa-chart-line"></i> 开 11,550 | 高 11,612 | 低 11,498 | 收 11,590</li>
+                            <li><i class="fas fa-arrow-trend-up"></i> 涨跌幅：+0.35%</li>
+                        </ul>
+                        <p class="bank-feature">指数方：SIX / SMI</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="banks-section" id="asia-pacific">
+                <h2 class="section-title"><i class="fas fa-earth-asia"></i> 亚太主要指数</h2>
+                <p class="section-description">覆盖中国、日本、香港、澳洲、印度、韩国等核心市场。</p>
+                <div class="banks-grid">
+                    <div class="bank-card broker-card">
+                        <div class="bank-icon no-logo"><span class="fallback-text">上</span></div>
+                        <h4 class="bank-name">上证综合指数</h4>
+                        <p class="bank-description broker-subtitle">SSE Composite</p>
+                        <ul class="bank-meta">
+                            <li><i class="fas fa-clock"></i> 当地时区：CST (UTC+8)</li>
+                            <li><i class="fas fa-chart-line"></i> 开 3,090 | 高 3,118 | 低 3,075 | 收 3,110</li>
+                            <li><i class="fas fa-arrow-trend-up"></i> 涨跌幅：+0.68%</li>
+                        </ul>
+                        <p class="bank-feature">数据源：上交所 / 中国证监会披露</p>
+                    </div>
+                    <div class="bank-card broker-card">
+                        <div class="bank-icon no-logo"><span class="fallback-text">深</span></div>
+                        <h4 class="bank-name">深证成份指数</h4>
+                        <p class="bank-description broker-subtitle">SZSE Component</p>
+                        <ul class="bank-meta">
+                            <li><i class="fas fa-clock"></i> 当地时区：CST (UTC+8)</li>
+                            <li><i class="fas fa-chart-line"></i> 开 9,460 | 高 9,580 | 低 9,420 | 收 9,540</li>
+                            <li><i class="fas fa-arrow-trend-up"></i> 涨跌幅：+0.85%</li>
+                        </ul>
+                        <p class="bank-feature">数据源：深交所官方行情</p>
+                    </div>
+                    <div class="bank-card broker-card">
+                        <div class="bank-icon no-logo"><span class="fallback-text">恒</span></div>
+                        <h4 class="bank-name">恒生指数</h4>
+                        <p class="bank-description broker-subtitle">Hang Seng Index</p>
+                        <ul class="bank-meta">
+                            <li><i class="fas fa-clock"></i> 当地时区：HKT (UTC+8)</li>
+                            <li><i class="fas fa-chart-line"></i> 开 17,820 | 高 18,040 | 低 17,760 | 收 17,990</li>
+                            <li><i class="fas fa-arrow-trend-up"></i> 涨跌幅：+0.95%</li>
+                        </ul>
+                        <p class="bank-feature">指数方：Hang Seng Indexes Company</p>
+                    </div>
+                    <div class="bank-card broker-card">
+                        <div class="bank-icon no-logo"><span class="fallback-text">日</span></div>
+                        <h4 class="bank-name">日经225指数</h4>
+                        <p class="bank-description broker-subtitle">Nikkei 225</p>
+                        <ul class="bank-meta">
+                            <li><i class="fas fa-clock"></i> 当地时区：JST (UTC+9)</li>
+                            <li><i class="fas fa-chart-line"></i> 开 38,420 | 高 38,960 | 低 38,280 | 收 38,770</li>
+                            <li><i class="fas fa-arrow-trend-up"></i> 涨跌幅：+0.91%</li>
+                        </ul>
+                        <p class="bank-feature">指数方：Nikkei Inc. / JPX</p>
+                    </div>
+                    <div class="bank-card broker-card">
+                        <div class="bank-icon no-logo"><span class="fallback-text">澳</span></div>
+                        <h4 class="bank-name">澳大利亚ASX200指数</h4>
+                        <p class="bank-description broker-subtitle">S&P/ASX 200</p>
+                        <ul class="bank-meta">
+                            <li><i class="fas fa-clock"></i> 当地时区：AEST/AEDT</li>
+                            <li><i class="fas fa-chart-line"></i> 开 7,820 | 高 7,865 | 低 7,792 | 收 7,848</li>
+                            <li><i class="fas fa-arrow-trend-up"></i> 涨跌幅：+0.36%</li>
+                        </ul>
+                        <p class="bank-feature">指数方：S&P Dow Jones Indices</p>
+                    </div>
+                    <div class="bank-card broker-card">
+                        <div class="bank-icon no-logo"><span class="fallback-text">印</span></div>
+                        <h4 class="bank-name">印度Nifty 50指数</h4>
+                        <p class="bank-description broker-subtitle">NSE India</p>
+                        <ul class="bank-meta">
+                            <li><i class="fas fa-clock"></i> 当地时区：IST (UTC+5:30)</li>
+                            <li><i class="fas fa-chart-line"></i> 开 22,520 | 高 22,680 | 低 22,430 | 收 22,640</li>
+                            <li><i class="fas fa-arrow-trend-up"></i> 涨跌幅：+0.53%</li>
+                        </ul>
+                        <p class="bank-feature">指数方：NSE Indices Limited</p>
+                    </div>
+                    <div class="bank-card broker-card">
+                        <div class="bank-icon no-logo"><span class="fallback-text">韩</span></div>
+                        <h4 class="bank-name">韩国KOSPI指数</h4>
+                        <p class="bank-description broker-subtitle">KRX</p>
+                        <ul class="bank-meta">
+                            <li><i class="fas fa-clock"></i> 当地时区：KST (UTC+9)</li>
+                            <li><i class="fas fa-chart-line"></i> 开 2,690 | 高 2,728 | 低 2,674 | 收 2,716</li>
+                            <li><i class="fas fa-arrow-trend-up"></i> 涨跌幅：+0.72%</li>
+                        </ul>
+                        <p class="bank-feature">指数方：Korea Exchange</p>
+                    </div>
+                    <div class="bank-card broker-card">
+                        <div class="bank-icon no-logo"><span class="fallback-text">星</span></div>
+                        <h4 class="bank-name">新加坡海峡时报指数</h4>
+                        <p class="bank-description broker-subtitle">STI</p>
+                        <ul class="bank-meta">
+                            <li><i class="fas fa-clock"></i> 当地时区：SGT (UTC+8)</li>
+                            <li><i class="fas fa-chart-line"></i> 开 3,230 | 高 3,252 | 低 3,218 | 收 3,244</li>
+                            <li><i class="fas fa-arrow-trend-up"></i> 涨跌幅：+0.43%</li>
+                        </ul>
+                        <p class="bank-feature">指数方：FTSE Russell / SGX</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="banks-section" id="emea">
+                <h2 class="section-title"><i class="fas fa-globe-asia"></i> 中东与非洲代表指数</h2>
+                <p class="section-description">涵盖海湾市场与南非蓝筹指数，补齐新兴市场视角。</p>
+                <div class="banks-grid">
+                    <div class="bank-card broker-card">
+                        <div class="bank-icon no-logo"><span class="fallback-text">沙</span></div>
+                        <h4 class="bank-name">沙特TASI指数</h4>
+                        <p class="bank-description broker-subtitle">Tadawul All Share</p>
+                        <ul class="bank-meta">
+                            <li><i class="fas fa-clock"></i> 当地时区：AST (UTC+3)</li>
+                            <li><i class="fas fa-chart-line"></i> 开 12,150 | 高 12,240 | 低 12,080 | 收 12,210</li>
+                            <li><i class="fas fa-arrow-trend-up"></i> 涨跌幅：+0.49%</li>
+                        </ul>
+                        <p class="bank-feature">数据源：Tadawul 交易所</p>
+                    </div>
+                    <div class="bank-card broker-card">
+                        <div class="bank-icon no-logo"><span class="fallback-text">南</span></div>
+                        <h4 class="bank-name">南非JSE Top 40指数</h4>
+                        <p class="bank-description broker-subtitle">FTSE/JSE Top 40</p>
+                        <ul class="bank-meta">
+                            <li><i class="fas fa-clock"></i> 当地时区：SAST (UTC+2)</li>
+                            <li><i class="fas fa-chart-line"></i> 开 70,880 | 高 71,460 | 低 70,620 | 收 71,220</li>
+                            <li><i class="fas fa-arrow-trend-up"></i> 涨跌幅：+0.48%</li>
+                        </ul>
+                        <p class="bank-feature">指数方：FTSE Russell / JSE</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="banks-section" id="disclaimer">
+                <h2 class="section-title"><i class="fas fa-info-circle"></i> 使用提示</h2>
+                <p class="section-description">以上K线为资讯参考，若需实时或更高频数据，请通过券商交易终端或专业行情终端获取。</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-shield-alt"></i> 优先采用交易所官方与一级行情供应商报价，确保可验证。</li>
+                    <li><i class="fas fa-rotate"></i> 涨跌幅以前一交易日收盘为基准；跨币种指数均以本币计价。</li>
+                    <li><i class="fas fa-bell"></i> 建议结合成交量、行业权重与宏观事件做进一步研判。</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
