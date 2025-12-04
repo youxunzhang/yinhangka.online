@@ -31,6 +31,7 @@ function buildPrimaryNavigation() {
         { href: '/loan-interest-calculator.html', icon: 'fas fa-coins', label: '贷款利率' },
         { href: '/mortgage-60-year-calculator.html', icon: 'fas fa-house', label: '60年期房贷' },
         { href: '/credit-card-installment-calculator.html', icon: 'fas fa-calculator', label: '信用卡分期' },
+        { href: '/credit-card-500k-installment.html', icon: 'fas fa-money-check-dollar', label: '50万分期' },
         { href: '/calculators.html', icon: 'fas fa-tools', label: '计算工具' },
         { href: '/math-calculator.html', icon: 'fas fa-square-root-variable', label: '多功能计算' },
         { href: '/compound-interest-calculator.html', icon: 'fas fa-chart-line', label: '复利计算' },
