@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- Google AdSense -->
+    <script async src="https://pageadservice.google.com/pagead/js/adsbygoogle.js?client=ca-pub-8794607118520437" crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-8794607118520437">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信用卡50万分期模拟 - 不同银行分期利率对比</title>
+    <meta name="description" content="模拟50万信用卡账单/消费分期，选择不同银行查看分期手续费率、每期应还与总成本，帮助您快速比较分期方案。">
+    <meta name="keywords" content="信用卡分期模拟,50万分期,分期手续费率,信用卡分期成本,银行分期比较">
+    <link rel="canonical" href="https://yinhangka.online/credit-card-500k-installment.html">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav-menu" aria-label="主菜单"></nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="面包屑导航">
+                <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <a href="/" itemprop="item">
+                            <span itemprop="name">首页</span>
+                        </a>
+                        <meta itemprop="position" content="1" />
+                    </li>
+                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <span itemprop="name">信用卡50万分期模拟</span>
+                        <meta itemprop="position" content="2" />
+                    </li>
+                </ol>
+            </nav>
+
+            <section class="hero">
+                <h1 class="hero-title">信用卡50万分期模拟</h1>
+                <p class="hero-description">
+                    选择分期银行后自动带出常见期数及每期手续费率，实时估算每月还款、总手续费与折算年化成本，帮助您快速对比50万分期方案。
+                </p>
+                <ul class="hero-highlights">
+                    <li><i class="fas fa-hand-holding-dollar" aria-hidden="true"></i> 默认按50万元额度测算，可按需微调</li>
+                    <li><i class="fas fa-building-columns" aria-hidden="true"></i> 支持多家银行的常见分期费率档位</li>
+                    <li><i class="fas fa-balance-scale" aria-hidden="true"></i> 自动计算每期还款与折算年化成本</li>
+                </ul>
+            </section>
+
+            <section class="calculator-section">
+                <div class="calculator-grid">
+                    <div class="calculator-card">
+                        <h3 class="calculator-title">
+                            <i class="fas fa-sliders" aria-hidden="true"></i>
+                            分期条件设置
+                        </h3>
+                        <form id="installment-form" class="calculator-form">
+                            <div class="form-group">
+                                <label for="installment-amount">分期总金额</label>
+                                <div class="input-wrapper with-prefix">
+                                    <span class="input-prefix">¥</span>
+                                    <input type="number" id="installment-amount" name="installment-amount" inputmode="decimal" min="10000" step="1000" value="500000" required aria-describedby="amount-helper">
+                                </div>
+                                <p class="form-helper" id="amount-helper">默认按照 500,000 元测算，您可根据实际账单金额微调。</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="bank-selector">选择分期银行</label>
+                                <div class="input-wrapper with-prefix">
+                                    <span class="input-prefix"><i class="fas fa-building-columns" aria-hidden="true"></i></span>
+                                    <select id="bank-selector" name="bank-selector" aria-describedby="bank-helper">
+                                    </select>
+                                </div>
+                                <p class="form-helper" id="bank-helper">不同银行的常见分期费率略有差异，切换后自动刷新分期成本。</p>
+                            </div>
+                        </form>
+
+                        <div class="calculator-results" id="installment-summary" role="region" aria-live="polite" aria-atomic="true">
+                            <p class="placeholder-text">请选择银行或调整金额后，将展示每月还款、总手续费与年化成本。</p>
+                        </div>
+                    </div>
+
+                    <aside class="calculator-side">
+                        <div class="info-card">
+                            <h3><i class="fas fa-info-circle" aria-hidden="true"></i> 说明</h3>
+                            <ul>
+                                <li>手续费为按月收取且按总额计提的常见模式；部分银行存在一次性收取或打折活动，可在备注中查看。</li>
+                                <li>折算年化为简化测算（总手续费 ÷ 金额 ÷ 期数 × 12），实际成本可能因提前结清、分期政策等有所偏差。</li>
+                                <li>结果仅供参考，最终以发卡行确认的费率与规则为准。</li>
+                            </ul>
+                        </div>
+                        <div class="info-card info-card--accent">
+                            <h3><i class="fas fa-shield-alt" aria-hidden="true"></i> 温馨提示</h3>
+                            <p>分期会占用信用额度且产生手续费。如有大额还款计划或现金流压力，请与银行沟通提前结清政策，确认是否返还未出账手续费。</p>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="rates-section">
+                <h2 class="section-title">
+                    <i class="fas fa-chart-bar" aria-hidden="true"></i>
+                    分期档位与费用明细
+                </h2>
+                <div class="rates-table-container">
+                    <div class="result-table-wrapper">
+                        <table class="rates-table" id="rates-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">期数</th>
+                                    <th scope="col">每期手续费率</th>
+                                    <th scope="col">每月还款（含手续费）</th>
+                                    <th scope="col">总手续费</th>
+                                    <th scope="col">折算年化成本</th>
+                                </tr>
+                            </thead>
+                            <tbody id="rates-body">
+                                <tr>
+                                    <td colspan="5" class="placeholder-text">选择银行后，系统将按当前金额生成各期数的分期测算。</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="service-section">
+                <h2 class="section-title">
+                    <i class="fas fa-handshake" aria-hidden="true"></i>
+                    银行分期亮点速览
+                </h2>
+                <div class="feature-grid" id="bank-feature-grid">
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>关于我们</h4>
+                    <p>提供实用的金融工具与资讯，帮助您掌握信用卡与银行产品信息。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快捷入口</h4>
+                    <ul>
+                        <li><a href="/index.html">国内银行</a></li>
+                        <li><a href="/credit-cards.html">信用卡</a></li>
+                        <li><a href="/credit-card-installment-calculator.html">信用卡分期计算器</a></li>
+                        <li><a href="/loan-interest-calculator.html">贷款利率计算器</a></li>
+                        <li><a href="/calculators.html">金融计算器合集</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>合规与提示</h4>
+                    <p>分期手续费、提前结清政策及额度恢复以发卡行实际公告为准，本页测算结果仅供参考。</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 yinhangka.online | 金融工具与资讯平台</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const bankProfiles = [
+            {
+                id: 'cmb',
+                name: '招商银行',
+                monthlyRates: { 3: 0.68, 6: 0.64, 12: 0.60, 24: 0.58 },
+                highlights: ['账单/消费分期均可申请', '提前结清未出账手续费有机会减免', 'APP自助申请，批复速度较快'],
+                color: '#667eea'
+            },
+            {
+                id: 'icbc',
+                name: '中国工商银行',
+                monthlyRates: { 3: 0.70, 6: 0.65, 12: 0.62, 24: 0.60 },
+                highlights: ['分期稳定性强，覆盖主流期数', '部分账单分期支持一次性手续费', '额度占用随还款逐步恢复'],
+                color: '#38bdf8'
+            },
+            {
+                id: 'ccb',
+                name: '中国建设银行',
+                monthlyRates: { 3: 0.66, 6: 0.62, 12: 0.58, 24: 0.56 },
+                highlights: ['常见活动期费率较低', '支持手机银行自助办理', '大额分期审核相对宽松'],
+                color: '#22c55e'
+            },
+            {
+                id: 'boc',
+                name: '中国银行',
+                monthlyRates: { 3: 0.69, 6: 0.64, 12: 0.60, 24: 0.59 },
+                highlights: ['支持账单/消费/现金分期', '部分地区有分期礼遇积分', '提前结清需联系客服确认政策'],
+                color: '#f97316'
+            },
+            {
+                id: 'abc',
+                name: '中国农业银行',
+                monthlyRates: { 3: 0.72, 6: 0.66, 12: 0.62, 24: 0.60 },
+                highlights: ['分期档位覆盖全面', '农行掌上银行可自助申请', '部分期数一次性手续费有优惠'],
+                color: '#06b6d4'
+            }
+        ];
+
+        const amountInput = document.getElementById('installment-amount');
+        const bankSelector = document.getElementById('bank-selector');
+        const summaryContainer = document.getElementById('installment-summary');
+        const ratesBody = document.getElementById('rates-body');
+        const featureGrid = document.getElementById('bank-feature-grid');
+
+        function formatCurrency(value) {
+            return Number(value).toLocaleString('zh-CN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        function populateBankSelector() {
+            bankProfiles.forEach(profile => {
+                const option = document.createElement('option');
+                option.value = profile.id;
+                option.textContent = profile.name;
+                bankSelector.appendChild(option);
+            });
+            bankSelector.value = bankProfiles[0].id;
+        }
+
+        function renderFeatureCards() {
+            featureGrid.innerHTML = bankProfiles.map(profile => `
+                <div class="feature-card" style="border-top: 4px solid ${profile.color};">
+                    <div class="feature-icon" style="background: ${profile.color}1a; color: ${profile.color};"><i class="fas fa-building"></i></div>
+                    <h3>${profile.name}分期亮点</h3>
+                    <ul>
+                        ${profile.highlights.map(item => `<li>${item}</li>`).join('')}
+                    </ul>
+                </div>
+            `).join('');
+        }
+
+        function buildSummary(profile, amount) {
+            const defaultMonths = Object.keys(profile.monthlyRates).map(Number).sort((a, b) => a - b)[0] || 12;
+            const monthlyRate = profile.monthlyRates[defaultMonths] || 0;
+            const monthlyFee = amount * (monthlyRate / 100);
+            const monthlyPrincipal = amount / defaultMonths;
+            const monthlyPayment = monthlyPrincipal + monthlyFee;
+            const totalFee = monthlyFee * defaultMonths;
+            const annualized = ((totalFee / amount) / (defaultMonths / 12)) * 100;
+
+            summaryContainer.innerHTML = `
+                <div class="result-row">
+                    <div>
+                        <p class="result-label">当前银行</p>
+                        <p class="result-value">${profile.name}</p>
+                    </div>
+                    <div>
+                        <p class="result-label">测算金额</p>
+                        <p class="result-value">¥${formatCurrency(amount)}</p>
+                    </div>
+                </div>
+                <div class="result-row">
+                    <div>
+                        <p class="result-label">参考期数</p>
+                        <p class="result-value">${defaultMonths} 期</p>
+                        <p class="result-label">每期手续费率 ${monthlyRate}%</p>
+                    </div>
+                    <div>
+                        <p class="result-label">预计每月还款</p>
+                        <p class="result-value">¥${formatCurrency(monthlyPayment)}</p>
+                        <p class="result-label">总手续费约 ¥${formatCurrency(totalFee)}，年化约 ${annualized.toFixed(2)}%</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderRatesTable(profile, amount) {
+            const termEntries = Object.entries(profile.monthlyRates).sort((a, b) => Number(a[0]) - Number(b[0]));
+
+            ratesBody.innerHTML = termEntries.map(([months, rate]) => {
+                const monthsNum = Number(months);
+                const monthlyFee = amount * (rate / 100);
+                const monthlyPrincipal = amount / monthsNum;
+                const monthlyPayment = monthlyPrincipal + monthlyFee;
+                const totalFee = monthlyFee * monthsNum;
+                const annualized = ((totalFee / amount) / (monthsNum / 12)) * 100;
+
+                return `
+                    <tr>
+                        <td>${monthsNum} 期</td>
+                        <td>${rate.toFixed(2)}%</td>
+                        <td>¥${formatCurrency(monthlyPayment)}</td>
+                        <td>¥${formatCurrency(totalFee)}</td>
+                        <td>${annualized.toFixed(2)}%</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function updateSimulation() {
+            const amount = Math.max(Number(amountInput.value) || 0, 10000);
+            const selectedProfile = bankProfiles.find(profile => profile.id === bankSelector.value) || bankProfiles[0];
+
+            amountInput.value = amount;
+            buildSummary(selectedProfile, amount);
+            renderRatesTable(selectedProfile, amount);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            populateBankSelector();
+            renderFeatureCards();
+            updateSimulation();
+
+            amountInput.addEventListener('input', updateSimulation);
+            bankSelector.addEventListener('change', updateSimulation);
+        });
+    </script>
+</body>
+</html>
