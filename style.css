@@ -4009,3 +4009,124 @@ mark {
 .footer-links a:hover {
     color: #ffd700;
 } 
+/* SWIFT 查询卡片样式 */
+.hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(102, 126, 234, 0.16);
+    color: #e0e7ff;
+    border-radius: 999px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.badge--ghost {
+    background: rgba(102, 126, 234, 0.08);
+    color: #4f46e5;
+    border-color: rgba(79, 70, 229, 0.25);
+}
+
+.quick-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.quick-actions .quick-label {
+    color: #6b7280;
+    font-weight: 600;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(102, 126, 234, 0.4);
+    color: #4f46e5;
+    background: rgba(102, 126, 234, 0.08);
+    border-radius: 999px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
+}
+
+.tag:hover {
+    background: rgba(102, 126, 234, 0.16);
+}
+
+.tag--outline {
+    background: transparent;
+    color: #374151;
+}
+
+.swift-card__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.swift-card__title {
+    margin: 0 0 6px;
+}
+
+.swift-card__meta {
+    color: #6b7280;
+    margin: 0;
+    font-size: 14px;
+}
+
+.swift-card__code {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.swift-card__body p {
+    margin: 6px 0;
+    color: #374151;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.swift-card__footer {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.swift-card .text-link {
+    color: #667eea;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .swift-card__header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .swift-card__code {
+        width: 100%;
+        text-align: center;
+    }
+}
