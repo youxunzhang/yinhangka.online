@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8794607118520437" crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-8794607118520437">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWIFT/BIC 查询 - 主流银行代码与网点信息</title>
+    <meta name="description" content="输入银行名称、城市或 SWIFT/BIC 代码，快速检索中外主流银行的国际汇款信息，包含常用分行、客服电话、官网等实用资料。">
+    <meta name="keywords" content="SWIFT查询,SWIFT代码,BIC查询,银行代码查询,国际汇款">
+    <link rel="canonical" href="https://yinhangka.online/swift-lookup.html">
+
+    <link rel="preload" href="style.css" as="style">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>国内银行</span>
+                </a>
+                <a href="global-banks.html" class="nav-link">
+                    <i class="fas fa-globe"></i>
+                    <span>全球银行</span>
+                </a>
+                <a href="international-remittance.html" class="nav-link">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>国际汇款</span>
+                </a>
+                <a href="global-payment-platforms.html" class="nav-link">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>全球支付</span>
+                </a>
+                <a href="global-brokers.html" class="nav-link">
+                    <i class="fas fa-briefcase"></i>
+                    <span>全球券商</span>
+                </a>
+                <a href="global-insurance.html" class="nav-link">
+                    <i class="fas fa-shield-heart"></i>
+                    <span>全球保险</span>
+                </a>
+                <a href="global-stock-kline.html" class="nav-link">
+                    <i class="fas fa-chart-area"></i>
+                    <span>全球股市K线</span>
+                </a>
+                <a href="credit-cards.html" class="nav-link">
+                    <i class="fas fa-credit-card"></i>
+                    <span>信用卡</span>
+                </a>
+                <a href="exchange-rates.html" class="nav-link">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>实时汇率</span>
+                </a>
+                <a href="loan-interest-calculator.html" class="nav-link">
+                    <i class="fas fa-coins"></i>
+                    <span>贷款利率</span>
+                </a>
+                <a href="credit-card-installment-calculator.html" class="nav-link">
+                    <i class="fas fa-calculator"></i>
+                    <span>信用卡分期</span>
+                </a>
+                <a href="calculators.html" class="nav-link">
+                    <i class="fas fa-tools"></i>
+                    <span>计算工具</span>
+                </a>
+                <a href="math-calculator.html" class="nav-link">
+                    <i class="fas fa-square-root-variable"></i>
+                    <span>多功能计算</span>
+                </a>
+                <a href="compound-interest-calculator.html" class="nav-link">
+                    <i class="fas fa-chart-line"></i>
+                    <span>复利计算</span>
+                </a>
+                <a href="rmb-uppercase.html" class="nav-link">
+                    <i class="fas fa-yen-sign"></i>
+                    <span>人民币大写</span>
+                </a>
+                <a href="card-bin-lookup.html" class="nav-link">
+                    <i class="fas fa-magnifying-glass"></i>
+                    <span>BIN 查询</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="面包屑导航">
+                <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <a href="/" itemprop="item">
+                            <span itemprop="name">首页</span>
+                        </a>
+                        <meta itemprop="position" content="1" />
+                    </li>
+                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <span itemprop="name">SWIFT/BIC 查询</span>
+                        <meta itemprop="position" content="2" />
+                    </li>
+                </ol>
+            </nav>
+
+            <section class="hero">
+                <h1 class="hero-title">SWIFT/BIC 查询工具</h1>
+                <p class="hero-description">
+                    输入银行名称、城市或 SWIFT/BIC 代码，快速检索全球主流银行的跨境汇款信息，包含常用分行、客服电话、官网与地址提示。
+                </p>
+                <div class="hero-badges">
+                    <span class="badge"><i class="fas fa-bolt"></i> 热门银行即时匹配</span>
+                    <span class="badge"><i class="fas fa-location-dot"></i> 支持城市/国家过滤</span>
+                    <span class="badge"><i class="fas fa-phone"></i> 附常用客服与官网</span>
+                </div>
+            </section>
+
+            <section class="calculator-section">
+                <div class="calculator-grid">
+                    <div class="calculator-card">
+                        <h3 class="calculator-title">
+                            <i class="fas fa-search"></i>
+                            关键字查询
+                        </h3>
+                        <form id="swift-search-form" class="calculator-form" novalidate>
+                            <div class="form-group">
+                                <label for="swift-keyword">银行名称、城市或 SWIFT/BIC</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="swift-keyword" name="swift-keyword" autocomplete="off" placeholder="例如：中国银行 / 北京 / BKCHCNBJ" aria-describedby="swift-helper" />
+                                </div>
+                                <p class="form-helper" id="swift-helper">可输入银行简称、所在城市或完整的 8-11 位 SWIFT/BIC 代码，自动匹配常用主流分行。</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="country-filter">国家/地区筛选</label>
+                                <select id="country-filter" name="country-filter">
+                                    <option value="all">全部地区</option>
+                                </select>
+                                <p class="form-helper">如需更精确的跨境信息，可先选择目标国家，再输入关键字。</p>
+                            </div>
+
+                            <div class="quick-actions">
+                                <span class="quick-label">快捷输入：</span>
+                                <button type="button" class="tag" data-keyword="BKCHCNBJ">中国银行总部</button>
+                                <button type="button" class="tag" data-keyword="HSBCHKHH">汇丰香港</button>
+                                <button type="button" class="tag" data-keyword="DEUTDEFF">德意志银行</button>
+                                <button type="button" class="tag" data-keyword="CITIUS33">花旗纽约</button>
+                                <button type="button" class="tag" data-keyword="DBSSSGSG">星展新加坡</button>
+                                <button type="button" class="tag" data-keyword="BARCGB22">巴克莱英国</button>
+                            </div>
+
+                            <button type="submit" class="calculator-submit">
+                                <i class="fas fa-search"></i>
+                                开始查询
+                            </button>
+                        </form>
+
+                        <div class="calculator-results" id="swift-results" role="status" aria-live="polite" aria-atomic="true">
+                            <p class="placeholder-text">输入关键字后即可查看匹配的 SWIFT/BIC 代码、分行及联系方式。</p>
+                        </div>
+                    </div>
+
+                    <aside class="calculator-side">
+                        <div class="info-card">
+                            <h3><i class="fas fa-lightbulb"></i> 查询建议</h3>
+                            <ul>
+                                <li>尽量提供城市或分行关键词，能快速定位正确 SWIFT。</li>
+                                <li>跨境汇款需核对收款人姓名、账号以及 SWIFT/BIC 是否与开户行一致。</li>
+                                <li>部分银行同城有多个分行，请优先使用开户行提供的官方代码。</li>
+                            </ul>
+                        </div>
+                        <div class="info-card info-card--accent">
+                            <h3><i class="fas fa-shield-alt"></i> 使用提示</h3>
+                            <p>本工具基于常见公开资料整理，仅供快速查阅。实际汇款请再次向银行或收款人确认，确保账户名、币种与 SWIFT/BIC 完全一致。</p>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="service-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <i class="fas fa-fire"></i>
+                        热门 SWIFT/BIC 快速卡片
+                    </h2>
+                    <p class="section-description">整理中国、香港、新加坡、英国、美国等主流地区的常见收款行代码，便于跨境收付款核对。</p>
+                    <div class="quick-actions">
+                        <button class="tag tag--outline" type="button" data-country="中国">中国</button>
+                        <button class="tag tag--outline" type="button" data-country="香港">香港</button>
+                        <button class="tag tag--outline" type="button" data-country="新加坡">新加坡</button>
+                        <button class="tag tag--outline" type="button" data-country="英国">英国</button>
+                        <button class="tag tag--outline" type="button" data-country="美国">美国</button>
+                        <button class="tag tag--outline" type="button" data-country="德国">德国</button>
+                        <button class="tag tag--outline" type="button" data-country="瑞士">瑞士</button>
+                    </div>
+                </div>
+                <div id="swift-card-grid" class="tips-grid"></div>
+                <p id="result-summary" class="form-helper" aria-live="polite"></p>
+            </section>
+
+            <section class="calculator-tips">
+                <h3 class="section-title">
+                    <i class="fas fa-circle-info"></i>
+                    SWIFT/BIC 常见问题
+                </h3>
+                <div class="tips-grid">
+                    <div class="info-card info-card--outline">
+                        <h3><i class="fas fa-question-circle"></i> 什么时候需要 SWIFT/BIC？</h3>
+                        <p>跨境电汇、境外工资、境外卡收单等场景均需填写 SWIFT/BIC。若目标国使用 IBAN，请同时填写 IBAN 与 SWIFT 以便路由。</p>
+                    </div>
+                    <div class="info-card info-card--outline">
+                        <h3><i class="fas fa-sitemap"></i> SWIFT 与 CNAPS、Routing Number 区别？</h3>
+                        <p>SWIFT/BIC 用于国际清算，通常为 8-11 位字母数字；CNAPS、Routing Number、IFSC 等是各国本地清算代码，跨境汇款常要求同时提供。</p>
+                    </div>
+                    <div class="info-card info-card--accent">
+                        <h3><i class="fas fa-user-shield"></i> 如何避免退汇？</h3>
+                        <ul>
+                            <li>核对银行英文名、城市、SWIFT/BIC 以及账号名拼写。</li>
+                            <li>确认收款行可接受的币种与中转行要求，必要时提供中转行 SWIFT。</li>
+                            <li>保留汇款回执或 MT103，便于查询路径与加快到账核实。</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>关于我们</h4>
+                    <p>为您提供最全面的银行服务信息和实用工具，帮助您安全、高效地处理银行卡事务。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快捷入口</h4>
+                    <ul>
+                        <li><a href="/index.html">国内银行</a></li>
+                        <li><a href="/global-banks.html">全球银行</a></li>
+                        <li><a href="/international-remittance.html">国际汇款</a></li>
+                        <li><a href="/exchange-rates.html">实时汇率</a></li>
+                        <li><a href="/calculators.html">金融计算器合集</a></li>
+                        <li><a href="/loan-interest-calculator.html">贷款利率计算器</a></li>
+                        <li><a href="/credit-card-installment-calculator.html">信用卡分期计算器</a></li>
+                        <li><a href="/card-bin-lookup.html">BIN 号查询工具</a></li>
+                        <li><a href="/swift-lookup.html">SWIFT/BIC 查询</a></li>
+                        <li><a href="/sitemap.xml">网站地图</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>联系我们</h4>
+                    <p>如有任何问题或建议，欢迎随时通过网站提供的联系方式与我们取得联系。</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 银行卡推荐网站. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="swift-lookup.js"></script>
+</body>
+</html>

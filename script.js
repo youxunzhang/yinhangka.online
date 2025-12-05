@@ -19,6 +19,7 @@ function buildPrimaryNavigation() {
     const primaryLinks = [
         { href: '/index.html', icon: 'fas fa-home', label: '国内银行' },
         { href: '/global-banks.html', icon: 'fas fa-globe', label: '全球银行' },
+        { href: '/swift-lookup.html', icon: 'fas fa-keyboard', label: 'SWIFT 查询' },
         { href: '/international-remittance.html', icon: 'fas fa-paper-plane', label: '国际汇款' },
         { href: '/global-payment-platforms.html', icon: 'fas fa-money-bill-wave', label: '全球支付' },
         { href: '/global-brokers.html', icon: 'fas fa-briefcase', label: '全球券商' },
