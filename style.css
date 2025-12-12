@@ -1030,10 +1030,11 @@ body {
 
 .bank-actions {
     display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
-    margin-top: 1.2rem;
-    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .bank-detail-link,
@@ -1042,22 +1043,24 @@ body {
     align-items: center;
     justify-content: center;
     gap: 0.35rem;
-    padding: 0.6rem 1.1rem;
-    border-radius: 12px;
+    padding: 0.45rem 0.8rem;
+    border-radius: 10px;
     font-weight: 600;
     text-decoration: none;
-    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
-    border: 1px solid rgba(102, 126, 234, 0.35);
-    background: rgba(255, 255, 255, 0.92);
-    color: #1f2937;
-    width: 100%;
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #e5e7eb;
+    background: #f8fafc;
+    color: #111827;
+    flex: 1 1 48%;
+    min-width: 140px;
 }
 
 .bank-detail-link:hover,
 .bank-actions .bank-link:hover {
-    background: rgba(102, 126, 234, 0.12);
-    border-color: rgba(102, 126, 234, 0.6);
-    color: #1c2a5f;
+    background: #eef2ff;
+    border-color: #c7d2fe;
+    color: #1f2937;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .bank-card::before {
