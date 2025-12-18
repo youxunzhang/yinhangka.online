@@ -25,10 +25,7 @@ function buildPrimaryNavigation() {
         { href: '/global-brokers.html', icon: 'fas fa-briefcase', label: '全球券商' },
         { href: '/global-insurance.html', icon: 'fas fa-shield-heart', label: '全球保险' },
         { href: '/credit-cards.html', icon: 'fas fa-credit-card', label: '信用卡' },
-        { href: '/exchange-rates.html', icon: 'fas fa-exchange-alt', label: '实时汇率' }
-    ];
-
-    const utilityLinks = [
+        { href: '/exchange-rates.html', icon: 'fas fa-exchange-alt', label: '实时汇率' },
         { href: '/loan-interest-calculator.html', icon: 'fas fa-coins', label: '贷款利率' },
         { href: '/mortgage-60-year-calculator.html', icon: 'fas fa-house', label: '60年期房贷' },
         { href: '/credit-card-installment-calculator.html', icon: 'fas fa-calculator', label: '信用卡分期' },
@@ -37,7 +34,8 @@ function buildPrimaryNavigation() {
         { href: '/math-calculator.html', icon: 'fas fa-square-root-variable', label: '多功能计算' },
         { href: '/compound-interest-calculator.html', icon: 'fas fa-chart-line', label: '复利计算' },
         { href: '/rmb-uppercase.html', icon: 'fas fa-yen-sign', label: '人民币大写' },
-        { href: '/card-bin-lookup.html', icon: 'fas fa-magnifying-glass', label: 'BIN 查询' }
+        { href: '/card-bin-lookup.html', icon: 'fas fa-magnifying-glass', label: 'BIN 查询' },
+        { href: '/financial-news.html', icon: 'fas fa-newspaper', label: '金融资讯' }
     ];
 
     const createLinkHTML = ({ href, icon, label }) => `
@@ -56,13 +54,6 @@ function buildPrimaryNavigation() {
             </div>
         </div>
         <div class="nav-primary">${primaryLinks.map(createLinkHTML).join('')}</div>
-        <div class="nav-more">
-            <button class="more-toggle" type="button" aria-expanded="false">
-                <i class="fas fa-ellipsis-h"></i>
-                <span>更多工具</span>
-            </button>
-            <div class="more-panel">${utilityLinks.map(createLinkHTML).join('')}</div>
-        </div>
     `;
 
     const currentPath = (window.location.pathname.split('/').filter(Boolean).pop() || 'index.html').toLowerCase();
@@ -81,24 +72,6 @@ function buildPrimaryNavigation() {
         allLinks[0].classList.add('active');
     }
 
-    const moreToggle = navMenu.querySelector('.more-toggle');
-    const morePanel = navMenu.querySelector('.more-panel');
-
-    if (moreToggle && morePanel) {
-        moreToggle.addEventListener('click', (event) => {
-            event.stopPropagation();
-            const isOpen = morePanel.classList.toggle('open');
-            moreToggle.setAttribute('aria-expanded', isOpen);
-        });
-
-        document.addEventListener('click', (event) => {
-            if (!morePanel.classList.contains('open')) return;
-            if (!morePanel.contains(event.target) && !moreToggle.contains(event.target)) {
-                morePanel.classList.remove('open');
-                moreToggle.setAttribute('aria-expanded', 'false');
-            }
-        });
-    }
 }
 
 // 页面加载完成后执行
