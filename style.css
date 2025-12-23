@@ -1047,11 +1047,10 @@ body {
 
 .bank-actions {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
+    flex-direction: column;
+    gap: 0.5rem;
     margin-top: 0.85rem;
-    align-items: center;
-    justify-content: space-between;
+    align-items: stretch;
 }
 
 .bank-detail-link,
@@ -1069,8 +1068,9 @@ body {
     border: 1px solid #e5e7eb;
     background: #f8fafc;
     color: #111827;
-    flex: 1 1 calc(50% - 0.4rem);
-    min-width: 0;
+    flex: 1 1 auto;
+    width: 100%;
+    white-space: nowrap;
 }
 
 .bank-detail-link:hover,
