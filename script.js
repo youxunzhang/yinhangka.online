@@ -17,25 +17,12 @@ function buildPrimaryNavigation() {
     if (!navMenu) return;
 
     const primaryLinks = [
-        { href: '/index.html', icon: 'fas fa-home', label: '国内银行' },
-        { href: '/global-banks.html', icon: 'fas fa-globe', label: '全球银行' },
-        { href: '/swift-lookup.html', icon: 'fas fa-keyboard', label: 'SWIFT 查询' },
-        { href: '/international-remittance.html', icon: 'fas fa-paper-plane', label: '国际汇款' },
-        { href: '/global-payment-platforms.html', icon: 'fas fa-money-bill-wave', label: '全球支付' },
-        { href: '/global-brokers.html', icon: 'fas fa-briefcase', label: '全球券商' },
-        { href: '/global-insurance.html', icon: 'fas fa-shield-heart', label: '全球保险' },
-        { href: '/credit-cards.html', icon: 'fas fa-credit-card', label: '信用卡' },
-        { href: '/exchange-rates.html', icon: 'fas fa-exchange-alt', label: '实时汇率' },
-        { href: '/loan-interest-calculator.html', icon: 'fas fa-coins', label: '贷款利率' },
-        { href: '/mortgage-60-year-calculator.html', icon: 'fas fa-house', label: '60年期房贷' },
-        { href: '/credit-card-installment-calculator.html', icon: 'fas fa-calculator', label: '信用卡分期' },
-        { href: '/credit-card-500k-installment.html', icon: 'fas fa-money-check-dollar', label: '50万分期' },
-        { href: '/calculators.html', icon: 'fas fa-tools', label: '计算工具' },
-        { href: '/math-calculator.html', icon: 'fas fa-square-root-variable', label: '多功能计算' },
-        { href: '/compound-interest-calculator.html', icon: 'fas fa-chart-line', label: '复利计算' },
-        { href: '/rmb-uppercase.html', icon: 'fas fa-yen-sign', label: '人民币大写' },
-        { href: '/card-bin-lookup.html', icon: 'fas fa-magnifying-glass', label: 'BIN 查询' },
-        { href: '/financial-news.html', icon: 'fas fa-newspaper', label: '金融资讯' }
+        { href: '/bank-pages', icon: 'fas fa-building-columns', label: '银行查询' },
+        { href: '/global-banks', icon: 'fas fa-globe', label: '海外银行' },
+        { href: '/exchange-rates', icon: 'fas fa-exchange-alt', label: '汇率查询' },
+        { href: '/calculators', icon: 'fas fa-tools', label: '金融计算' },
+        { href: '/credit-cards', icon: 'fas fa-credit-card', label: '信用卡' },
+        { href: '/financial-news', icon: 'fas fa-newspaper', label: '金融资讯' }
     ];
 
     const createLinkHTML = ({ href, icon, label }) => `
@@ -50,7 +37,7 @@ function buildPrimaryNavigation() {
             <div class="brand-icon"><i class="fas fa-building-columns"></i></div>
             <div class="brand-text">
                 <strong>主要菜单</strong>
-                <small>银行与金融工具</small>
+                <small>银行查询 · 汇率利率 · 国际金融工具一站式查询</small>
             </div>
         </div>
         <div class="nav-primary">${primaryLinks.map(createLinkHTML).join('')}</div>
