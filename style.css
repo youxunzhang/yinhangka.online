@@ -1027,8 +1027,8 @@ body {
 /* 银行卡片网格 */
 .banks-grid {
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 1.8rem;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1.1rem;
     margin-top: 2.2rem;
 }
 
@@ -1036,7 +1036,7 @@ body {
 .bank-card {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 15px;
-    padding: 1.5rem;
+    padding: 1rem 0.9rem;
     text-align: center;
     transition: all 0.3s ease;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
@@ -1100,7 +1100,7 @@ body {
 }
 
 .bank-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-6px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     background: rgba(255, 255, 255, 1);
 }
@@ -1690,16 +1690,16 @@ body {
 
 /* 银行图标 */
 .bank-icon {
-    width: 70px;
-    height: 70px;
-    margin: 0 auto 1rem;
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 0.7rem;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
     position: relative;
@@ -1708,8 +1708,8 @@ body {
 
 /* Favicon图片样式 */
 .favicon-img {
-    width: 42px;
-    height: 42px;
+    width: 34px;
+    height: 34px;
     object-fit: contain;
     border-radius: 6px;
     background: white;
@@ -1725,7 +1725,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     font-weight: bold;
     color: white;
     opacity: 0;
@@ -1846,9 +1846,9 @@ body {
 
 /* 银行名称 */
 .bank-name {
-    font-size: 1.2rem;
+    font-size: 1.05rem;
     font-weight: bold;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.25rem;
     color: #333;
     line-height: 1.3;
 }
@@ -1859,11 +1859,15 @@ body {
 
 /* 银行描述 */
 .bank-description {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     color: #666;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.6rem;
     opacity: 0.8;
-    line-height: 1.4;
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .bank-card.featured .bank-description {
@@ -1991,7 +1995,7 @@ body {
 
 .bank-icon.no-logo .fallback-text {
     opacity: 1;
-    font-size: 1.6rem;
+    font-size: 1.3rem;
 }
 
 .bank-card.featured .contact-phone:hover {
@@ -2009,11 +2013,11 @@ body {
     display: inline-block;
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
-    padding: 0.6rem 1.2rem;
+    padding: 0.45rem 0.9rem;
     text-decoration: none;
     border-radius: 25px;
     font-weight: bold;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     transition: all 0.3s ease;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
@@ -3497,31 +3501,31 @@ body {
     
     .banks-grid {
         grid-template-columns: repeat(3, 1fr);
-        gap: 1.2rem;
+        gap: 1rem;
     }
     
     .bank-card {
-        padding: 1.5rem;
+        padding: 1rem;
     }
     
     .bank-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 1.5rem;
+        width: 52px;
+        height: 52px;
+        font-size: 1.3rem;
     }
     
     .favicon-img {
-        width: 36px;
-        height: 36px;
+        width: 32px;
+        height: 32px;
         padding: 3px;
     }
     
     .fallback-text {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
     
     .bank-name {
-        font-size: 1.3rem;
+        font-size: 1rem;
     }
     
     .contact-phone {
@@ -3616,15 +3620,15 @@ body {
 
 @media (max-width: 1200px) {
     .banks-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1.3rem;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1rem;
     }
 }
 
 @media (max-width: 992px) {
     .banks-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.2rem;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
     }
 }
 
@@ -3717,31 +3721,31 @@ body {
     
     .banks-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
+        gap: 0.8rem;
     }
 
     .bank-card {
         margin: 0 5px;
-        padding: 1rem;
+        padding: 0.85rem;
     }
 
     .bank-icon {
-        width: 50px;
-        height: 50px;
+        width: 46px;
+        height: 46px;
     }
 
     .favicon-img {
-        width: 30px;
-        height: 30px;
+        width: 28px;
+        height: 28px;
         padding: 2px;
     }
 
     .fallback-text {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 
     .bank-name {
-        font-size: 1.1rem;
+        font-size: 0.95rem;
     }
 
     .bin-detail-value {
